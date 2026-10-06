@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Stinkbug : PlayableCharacter
 {
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         speed = 5;
     }
 
     private void Update()
     {
-        Movement();
+        HandleMovement();
     }
 }

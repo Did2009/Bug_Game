@@ -4,22 +4,22 @@ using UnityEngine.InputSystem;
 public abstract class PlayableCharacter : MonoBehaviour
 {
     // References
-    private PlayerInputManager inputManager;
-    private Rigidbody2D rb;
+    protected PlayerInputManager inputManager;
+    public Rigidbody2D parentRb;
 
     // Movement Variables
-    protected int speed;
+    [SerializeField] protected int speed;
 
-    private void Start()
+    protected virtual void Start()
     {
         // Asign relevant references within the code
-        inputManager = GetComponent<PlayerInputManager>();
-        rb = GetComponent<Rigidbody2D>();
+        inputManager = GetComponentInParent<PlayerInputManager>();
+        parentRb = GetComponentInParent<Rigidbody2D>();
     }
 
     // Called individually in each playable bug
-    protected void Movement()
+    protected virtual void HandleMovement()
     {
-        // rb.linearVelocity = new Vector2(inputManager.movementInputX * speed, 0);
+        parentRb.linearVelocity = new Vector2(inputManager.movementInputX * speed, parentRb.linearVelocity.y);
     }
 }
