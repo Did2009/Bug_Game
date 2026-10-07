@@ -9,6 +9,7 @@ public class PlayerInputManager : MonoBehaviour
     [Header("Player Inputs")]
     public float movementInputX;
     public bool isJumping;
+    public bool switchCharacters;
 
     private void Awake()
     {
@@ -26,6 +27,8 @@ public class PlayerInputManager : MonoBehaviour
         controls.Player.Movement.performed += i => movementInputX = i.ReadValue<Vector2>().x;
         // Jump:
         controls.Player.Jump.performed += i => isJumping = true;
+        // Switch Characters:
+        controls.Player.SwitchCharacters.performed += i => switchCharacters = true;
     }
 
     private void OnDisable()
