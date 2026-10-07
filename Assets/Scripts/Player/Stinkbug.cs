@@ -5,11 +5,15 @@ public class Stinkbug : PlayableCharacter
     protected override void Start()
     {
         base.Start();
-        speed = 5;
+
+        // Determines the stinkbug's movement speed
+        movementSpeed = 5;
+        // Determines the stinkbug's jumping power
+        jumpingPower = 6.5f;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        HandleMovement();
+        base.Update();
     }
 }

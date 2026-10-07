@@ -5,8 +5,10 @@ public class PlayerInputManager : MonoBehaviour
     // References
     public PlayerControls controls;
 
-    // Input Varaibles
+    // Variables
+    [Header("Player Inputs")]
     public float movementInputX;
+    public bool isJumping;
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class PlayerInputManager : MonoBehaviour
         // Assign PlayerControls Inputs to relevant variables:
         // Movement:
         controls.Player.Movement.performed += i => movementInputX = i.ReadValue<Vector2>().x;
+        // Jump:
+        controls.Player.Jump.performed += i => isJumping = true;
     }
 
     private void OnDisable()
