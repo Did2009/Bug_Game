@@ -15,6 +15,9 @@ public class CharacterManager : MonoBehaviour
     public GameObject rollyPolly;
     public GameObject butterfly;
 
+    [Header("Character Flags")]
+    public bool isDoingAction;
+
     private void Start()
     {
         // Asign relevant references within the code
@@ -27,23 +30,31 @@ public class CharacterManager : MonoBehaviour
     private void Update()
     {
         // Logic to handle character switching
+        // When switching characters is activated:
         if (inputManager.switchCharacters)
         {
             // Deactivate the input so it doesn't repeat
             inputManager.switchCharacters = false;
-
-            // Makes sure the character selection remains between 1 and 3
-            if (selectedCharacter == 3)
+            
+            // Makes sure the player can't change characters while doing an action
+            if (!isDoingAction)
             {
-                selectedCharacter = 1;
+                // Continue only if the player is not moving and is grounded
+                if (inputManager.movementInputX == 0 && IsGrounded())
+                {
+                    // Make sure the character selection remains between 1 and 3
+                    if (selectedCharacter == 3)
+                    {
+                        selectedCharacter = 1;
+                    }
+                    else
+                    {
+                        selectedCharacter++;
+                    }
+                    // Switch the character according to selected character
+                    HandleCharacterSwitching();
+                }
             }
-            else
-            {
-                selectedCharacter++;
-            }
-
-            // Switch the character according to logic
-            HandleCharacterSwitching();
         }
     }
 
@@ -60,19 +71,16 @@ public class CharacterManager : MonoBehaviour
         switch (selectedCharacter)
         {
             case 1:
-                Debug.Log("Stinkbug Selected");
                 stinkbug.SetActive(true);
                 rollyPolly.SetActive(false);
                 butterfly.SetActive(false);
                 break;
             case 2:
-                Debug.Log("Rolly Polly Selected");
                 stinkbug.SetActive(false);
                 rollyPolly.SetActive(true);
                 butterfly.SetActive(false);
                 break;
             case 3:
-                Debug.Log("Butterfly Selected");
                 stinkbug.SetActive(false);
                 rollyPolly.SetActive(false);
                 butterfly.SetActive(true);

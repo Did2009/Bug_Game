@@ -32,6 +32,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RollyPollyLaunch",
+                    "type": "Button",
+                    "id": "b864d469-b2cb-4c0b-92fa-76abd5fbbec7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -109,6 +118,17 @@
                     "processors": "",
                     "groups": ";Keyboard & Mouse",
                     "action": "SwitchCharacters",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1846bbb4-d8f1-437e-a5e0-e777a4442ed2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": ";Keyboard & Mouse",
+                    "action": "RollyPollyLaunch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

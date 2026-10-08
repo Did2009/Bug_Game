@@ -10,6 +10,7 @@ public class PlayerInputManager : MonoBehaviour
     public float movementInputX;
     public bool isJumping;
     public bool switchCharacters;
+    public bool preparingToLaunchRollyPolly;
 
     private void Awake()
     {
@@ -29,6 +30,9 @@ public class PlayerInputManager : MonoBehaviour
         controls.Player.Jump.performed += i => isJumping = true;
         // Switch Characters:
         controls.Player.SwitchCharacters.performed += i => switchCharacters = true;
+        // Launch Rolly Polly:
+        controls.Player.RollyPollyLaunch.performed += i => preparingToLaunchRollyPolly = true;
+        controls.Player.RollyPollyLaunch.canceled += i => preparingToLaunchRollyPolly = false;
     }
 
     private void OnDisable()

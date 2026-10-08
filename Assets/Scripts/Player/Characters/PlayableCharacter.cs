@@ -14,6 +14,8 @@ public abstract class PlayableCharacter : MonoBehaviour
     [SerializeField] protected float movementSpeed;
     [SerializeField] protected float jumpingPower;
 
+    
+
     protected virtual void Start()
     {
         // Asign relevant references within the code
@@ -36,7 +38,11 @@ public abstract class PlayableCharacter : MonoBehaviour
     // Movement speed is different for each bug
     protected virtual void HandleMovement()
     {
-        parentRb.linearVelocity = new Vector2(inputManager.movementInputX * movementSpeed, parentRb.linearVelocity.y);
+        // Makes sure the player can't move while doinf an action
+        if (!characterManager.isDoingAction)
+        {
+            parentRb.linearVelocity = new Vector2(inputManager.movementInputX * movementSpeed, parentRb.linearVelocity.y);
+        }
     }
 
     // Method to make the player jump
@@ -46,12 +52,16 @@ public abstract class PlayableCharacter : MonoBehaviour
         // Turns off input
         inputManager.isJumping = false;
 
-        // Checks if the player is grounded
-        // Prevents the player from jumping in mid-air
-        if (characterManager.IsGrounded())
+        // Makes sure the player can't jump while doing an action
+        if (!characterManager.isDoingAction)
         {
-            // Makes the player jump
-            parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+            // Checks if the player is grounded
+            // Prevents the player from jumping in mid-air
+            if (characterManager.IsGrounded())
+            {
+                // Makes the player jump
+                parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+            }
         }
     }
 }
