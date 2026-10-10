@@ -15,5 +15,16 @@ public class Stinkbug : PlayableCharacter
     protected override void Update()
     {
         base.Update();
+
+        HandleSpray();
+    }
+
+    private void HandleSpray()
+    {
+        if (inputManager.preformSpray)
+        {
+            inputManager.preformSpray = false;
+            Debug.Log("Preformed Spray!");
+        }
     }
 }

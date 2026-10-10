@@ -20,39 +20,29 @@ public class Butterfly : PlayableCharacter
     {
         HandleMovement();
 
-        if (inputManager.isJumping)
-        {
-            HandleFlying();
-        }
+        HandleFlying();
     }
 
     private void HandleFlying()
     {
-        // Turns off input
-        inputManager.isJumping = false;
-        //StartCoroutine(FlyingCooldown());
+        if (inputManager.isJumping)
+        {
+            // Turns off input
+            inputManager.isJumping = false;
+            //StartCoroutine(FlyingCooldown());
 
-        if (characterManager.IsGrounded())
-        {
-            numberOfFlaps = 1;
-            // Makes the player jump
-            parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
-        }
-        else if (numberOfFlaps == 1 || numberOfFlaps == 2)
-        {
-            numberOfFlaps ++;
-            // Makes the player jump
-            parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+            if (characterManager.IsGrounded())
+            {
+                numberOfFlaps = 1;
+                // Makes the player jump
+                parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+            }
+            else if (numberOfFlaps == 1 || numberOfFlaps == 2)
+            {
+                numberOfFlaps++;
+                // Makes the player jump
+                parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+            }
         }
     }
-    /*
-    IEnumerator FlyingCooldown()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        inputManager.isJumping = false;
-
-        yield return null;
-    }
-    */
 }

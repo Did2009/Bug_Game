@@ -127,6 +127,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StinkbugSpray"",
+                    ""type"": ""Button"",
+                    ""id"": ""801b7493-6a2a-43e3-a0fa-1b59c753bfe0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -217,6 +226,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""RollyPollyLaunch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc0937d1-395e-4552-850b-a738978eb06c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard & Mouse"",
+                    ""action"": ""StinkbugSpray"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -246,6 +266,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_SwitchCharacters = m_Player.FindAction("SwitchCharacters", throwIfNotFound: true);
         m_Player_RollyPollyLaunch = m_Player.FindAction("RollyPollyLaunch", throwIfNotFound: true);
+        m_Player_StinkbugSpray = m_Player.FindAction("StinkbugSpray", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -330,6 +351,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_SwitchCharacters;
     private readonly InputAction m_Player_RollyPollyLaunch;
+    private readonly InputAction m_Player_StinkbugSpray;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -357,6 +379,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/RollyPollyLaunch".
         /// </summary>
         public InputAction @RollyPollyLaunch => m_Wrapper.m_Player_RollyPollyLaunch;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/StinkbugSpray".
+        /// </summary>
+        public InputAction @StinkbugSpray => m_Wrapper.m_Player_StinkbugSpray;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -395,6 +421,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RollyPollyLaunch.started += instance.OnRollyPollyLaunch;
             @RollyPollyLaunch.performed += instance.OnRollyPollyLaunch;
             @RollyPollyLaunch.canceled += instance.OnRollyPollyLaunch;
+            @StinkbugSpray.started += instance.OnStinkbugSpray;
+            @StinkbugSpray.performed += instance.OnStinkbugSpray;
+            @StinkbugSpray.canceled += instance.OnStinkbugSpray;
         }
 
         /// <summary>
@@ -418,6 +447,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RollyPollyLaunch.started -= instance.OnRollyPollyLaunch;
             @RollyPollyLaunch.performed -= instance.OnRollyPollyLaunch;
             @RollyPollyLaunch.canceled -= instance.OnRollyPollyLaunch;
+            @StinkbugSpray.started -= instance.OnStinkbugSpray;
+            @StinkbugSpray.performed -= instance.OnStinkbugSpray;
+            @StinkbugSpray.canceled -= instance.OnStinkbugSpray;
         }
 
         /// <summary>
@@ -499,5 +531,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRollyPollyLaunch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "StinkbugSpray" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStinkbugSpray(InputAction.CallbackContext context);
     }
 }

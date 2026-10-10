@@ -24,18 +24,31 @@ public class CharacterManager : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         
         // Start with selected character
-        HandleCharacterSwitching();
+        SwitchCharacters();
     }
 
     private void Update()
     {
         // Logic to handle character switching
+        HandleCharacterSwitching();
+    }
+
+    // Method that checks if the player is touching the ground or not
+    // Returns a true or false result
+    public bool IsGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+    }
+
+    // Method to handle character switching logic
+    private void HandleCharacterSwitching()
+    {
         // When switching characters is activated:
         if (inputManager.switchCharacters)
         {
             // Deactivate the input so it doesn't repeat
             inputManager.switchCharacters = false;
-            
+
             // Makes sure the player can't change characters while doing an action
             if (!isDoingAction)
             {
@@ -52,37 +65,36 @@ public class CharacterManager : MonoBehaviour
                         selectedCharacter++;
                     }
                     // Switch the character according to selected character
-                    HandleCharacterSwitching();
+                    SwitchCharacters();
                 }
             }
         }
     }
 
-    // Method that checks if the player is touching the ground or not
-    // Returns a true or false result
-    public bool IsGrounded()
-    {
-        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-    }
-
     // Method to switch characters
-    private void HandleCharacterSwitching()
+    private void SwitchCharacters()
     {
         switch (selectedCharacter)
         {
             case 1:
+                // Reset Stinkbug spray
+                inputManager.preformSpray = false;
+                // Set Stinkbug as active character
                 stinkbug.SetActive(true);
                 rollyPolly.SetActive(false);
                 butterfly.SetActive(false);
                 break;
             case 2:
+                // Reset Rolly Polly Launch
                 inputManager.isChoosingLaunchDirection = false;
                 inputManager.preformLaunch = false;
+                // Set Rolly Polly as active character
                 stinkbug.SetActive(false);
                 rollyPolly.SetActive(true);
                 butterfly.SetActive(false);
                 break;
             case 3:
+                // Set Butterfly as active character
                 stinkbug.SetActive(false);
                 rollyPolly.SetActive(false);
                 butterfly.SetActive(true);
@@ -91,6 +103,7 @@ public class CharacterManager : MonoBehaviour
                 Debug.Log("Error");
                 break;
         }
+
     }
 }
 

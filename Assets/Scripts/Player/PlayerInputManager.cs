@@ -6,12 +6,15 @@ public class PlayerInputManager : MonoBehaviour
     public PlayerControls controls;
 
     // Variables
-    [Header("Player Inputs")]
+    [Header("General Player Inputs")]
     public float movementInputX;
     public bool isJumping;
     public bool switchCharacters;
+    [Header("Rolly Polly-related Inputs")]
     public bool isChoosingLaunchDirection;
     public bool preformLaunch;
+    [Header("Stinkbug-related Inputs")]
+    public bool preformSpray;
 
     private void Awake()
     {
@@ -35,6 +38,8 @@ public class PlayerInputManager : MonoBehaviour
         controls.Player.RollyPollyLaunch.performed += i => isChoosingLaunchDirection = true;
         controls.Player.RollyPollyLaunch.canceled += i => isChoosingLaunchDirection = false;
         controls.Player.RollyPollyLaunch.canceled += i => preformLaunch = true;
+        // Stinkbug Spray:
+        controls.Player.StinkbugSpray.performed += i => preformSpray = true;
     }
 
     private void OnDisable()
