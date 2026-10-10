@@ -10,7 +10,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] Transform groundCheck;
 
     [Header("Character Selection Variables")]
-    [SerializeField] int selectedCharacter = 1;
+    public int selectedCharacter = 1;
     public GameObject stinkbug;
     public GameObject rollyPolly;
     public GameObject butterfly;
@@ -76,6 +76,8 @@ public class CharacterManager : MonoBehaviour
                 butterfly.SetActive(false);
                 break;
             case 2:
+                inputManager.isChoosingLaunchDirection = false;
+                inputManager.preformLaunch = false;
                 stinkbug.SetActive(false);
                 rollyPolly.SetActive(true);
                 butterfly.SetActive(false);

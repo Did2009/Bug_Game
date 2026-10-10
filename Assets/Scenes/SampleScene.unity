@@ -258,7 +258,8 @@ MonoBehaviour:
   movementInputX: 0
   isJumping: 0
   switchCharacters: 0
-  preparingToLaunchRollyPolly: 0
+  isChoosingLaunchDirection: 0
+  preformLaunch: 0
 --- !u!114 &254010738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +357,7 @@ MonoBehaviour:
   stinkbug: {fileID: 812605697}
   rollyPolly: {fileID: 1983073282}
   butterfly: {fileID: 1646637944}
+  isDoingAction: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1715,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollyPolly
   movementSpeed: 0
   jumpingPower: 0
-  launchingArrowRenderer: {fileID: 99560323}
+  isLaunching: 0
+  launchDirection: {x: 0, y: 0, z: 0}
+  launchPower: 20
+  launchTime: 0.2
+  arrowRenderer: {fileID: 99560323}
+  finishedLaunch: 0
   squareSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   circleSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
 --- !u!61 &1983073286
