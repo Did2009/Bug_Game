@@ -42,7 +42,10 @@ public class RollyPolly : PlayableCharacter
     {
         base.Update();
 
-        HandleLaunch();   
+        if (!characterManager.isDead)
+        {
+            HandleLaunch();
+        } 
     }
 
     private void HandleLaunch()

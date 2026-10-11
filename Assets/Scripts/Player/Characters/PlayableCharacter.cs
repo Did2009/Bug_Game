@@ -26,11 +26,14 @@ public abstract class PlayableCharacter : MonoBehaviour
 
     protected virtual void Update()
     {
-        HandleMovement();
-
-        if (inputManager.isJumping)
+        if (!characterManager.isDead)
         {
-            HandleJump();
+            HandleMovement();
+
+            if (inputManager.isJumping)
+            {
+                HandleJump();
+            }
         }
     }
 
@@ -38,7 +41,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     // Movement speed is different for each bug
     protected virtual void HandleMovement()
     {
-        // Makes sure the player can't move while doinf an action
+        // Makes sure the player can't move while doing an action
         if (!characterManager.isDoingAction)
         {
             parentRb.linearVelocity = new Vector2(inputManager.movementInputX * movementSpeed, parentRb.linearVelocity.y);

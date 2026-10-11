@@ -1,9 +1,17 @@
 using UnityEngine;
 
-public class CharacterManager : MonoBehaviour
+public class CharacterManager : MonoBehaviour, IDamagable
 {
     // References
     PlayerInputManager inputManager;
+
+    [Header("Player Health")]
+    [SerializeField] int maxHP = 3;
+    [SerializeField] int currentHP;
+    public bool isDead;
+
+    [Header("Character Flags")]
+    public bool isDoingAction;
 
     [Header("Ground Check Variables")]
     [SerializeField] LayerMask groundLayer;
@@ -15,9 +23,6 @@ public class CharacterManager : MonoBehaviour
     public GameObject rollyPolly;
     public GameObject butterfly;
 
-    [Header("Character Flags")]
-    public bool isDoingAction;
-
     private void Start()
     {
         // Asign relevant references within the code
@@ -25,12 +30,19 @@ public class CharacterManager : MonoBehaviour
         
         // Start with selected character
         SwitchCharacters();
+
+        // Set Starting Health
+        currentHP = maxHP;
+        isDead = false;
     }
 
     private void Update()
     {
-        // Logic to handle character switching
-        HandleCharacterSwitching();
+        if (!isDead)
+        {
+            // Logic to handle character switching
+            HandleCharacterSwitching();
+        }
     }
 
     // Method that checks if the player is touching the ground or not
@@ -104,6 +116,17 @@ public class CharacterManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    void IDamagable.TakeDamage(int howMuch)
+    {
+        currentHP = currentHP - howMuch;
+    }
+
+    void IDamagable.Die()
+    {
+        isDead = true;
+        currentHP = 0;
     }
 }
 
