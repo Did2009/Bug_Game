@@ -2,12 +2,19 @@ using UnityEngine;
 
 public class SpikeTrap : Trap
 {
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        GameObject whatIDamage = collision.gameObject;
+
+        if (whatIDamage.CompareTag("Player"))
         {
-            Debug.Log("Collision Detected!");
-            ApplyDamage(collision.gameObject.GetComponent<IDamagable>());
+            Debug.Log("Player Detected!");
+            ApplyDamage(whatIDamage.GetComponent<IDamagable>());
+
+            if (whatIDamage.GetComponent<CharacterManager>().currentHP <= 0)
+            {
+                whatIDamage.GetComponent<IDamagable>().Die();
+            }
         }
     }
 }

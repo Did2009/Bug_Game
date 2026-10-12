@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour, IDamagable
@@ -7,7 +8,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
     [Header("Player Health")]
     [SerializeField] int maxHP = 3;
-    [SerializeField] int currentHP;
+    public int currentHP;
     public bool isDead;
 
     [Header("Character Flags")]
@@ -121,12 +122,18 @@ public class CharacterManager : MonoBehaviour, IDamagable
     void IDamagable.TakeDamage(int howMuch)
     {
         currentHP = currentHP - howMuch;
+        StartCoroutine(FlashRed());
     }
 
     void IDamagable.Die()
     {
         isDead = true;
         currentHP = 0;
+    }
+
+    IEnumerator FlashRed()
+    {
+        yield return null;
     }
 }
 
