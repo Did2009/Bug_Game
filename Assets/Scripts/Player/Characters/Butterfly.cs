@@ -21,6 +21,7 @@ public class Butterfly : PlayableCharacter
         if (!characterManager.isDead)
         {
             HandleMovement();
+            HandleSpriteDirections();
             HandleFlying();
         }
     }

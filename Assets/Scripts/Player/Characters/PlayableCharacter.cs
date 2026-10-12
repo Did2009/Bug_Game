@@ -29,6 +29,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         if (!characterManager.isDead)
         {
             HandleMovement();
+            HandleSpriteDirections();
 
             if (inputManager.isJumping)
             {
@@ -65,6 +66,23 @@ public abstract class PlayableCharacter : MonoBehaviour
                 // Makes the player jump
                 parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
             }
+        }
+    }
+
+    protected virtual void HandleSpriteDirections()
+    {
+        // Left and Right movement 
+        if (inputManager.movementInputX == 0)
+        {
+            characterManager.transform.eulerAngles = characterManager.transform.eulerAngles;
+        }
+        else if (inputManager.movementInputX > 0)
+        {
+            characterManager.transform.eulerAngles = Vector3.zero;
+        }
+        else
+        {
+            characterManager.transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
 }

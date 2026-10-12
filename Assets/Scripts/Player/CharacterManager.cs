@@ -50,7 +50,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
     // Returns a true or false result
     public bool IsGrounded()
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.45f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
 
     // Method to handle character switching logic
