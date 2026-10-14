@@ -6,6 +6,9 @@ public class RollyPolly : PlayableCharacter
 {
     // References:
     SpriteRenderer spriteRenderer;
+    Animator animator;
+    BoxCollider2D boxCollider;
+    CircleCollider2D circleCollider;
 
     [Header("Launching Variables")]
     [SerializeField] bool isLaunching;
@@ -16,16 +19,15 @@ public class RollyPolly : PlayableCharacter
     public SpriteRenderer arrowRenderer;
     [SerializeField] bool finishedLaunch;
 
-    [Header("Temporary Sprites")]
-    public Sprite squareSprite;
-    public Sprite circleSprite;
-
     protected override void Start()
     {
         base.Start();
 
         // Assign References:
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
 
         // Determines the rolly polly's movement speed
         movementSpeed = 6;
@@ -33,6 +35,8 @@ public class RollyPolly : PlayableCharacter
         jumpingPower = 5;
 
         arrowRenderer.enabled = false;
+        boxCollider.enabled = true;
+        circleCollider.enabled = false;
 
         // Set the launch time reset
         launchTimeReset = launchTime;
@@ -45,6 +49,7 @@ public class RollyPolly : PlayableCharacter
         if (!characterManager.isDead)
         {
             HandleLaunch();
+            HandleAnimations();
         } 
     }
 
@@ -62,8 +67,7 @@ public class RollyPolly : PlayableCharacter
                 characterManager.isDoingAction = true;
                 // An arrow to choose direction appears
                 arrowRenderer.enabled = true;
-                // TEMPORARY: The player turns into a ball
-                spriteRenderer.sprite = circleSprite;
+                animator.Play("RollyPollySpin");
             }
             // When the player releases the right mouse key:
             else if (inputManager.preformLaunch)
@@ -81,16 +85,15 @@ public class RollyPolly : PlayableCharacter
                 launchDirection.z = 0;
                 launchDirection = launchDirection.normalized;
 
-                /* Used to change rotation of sprite, enable when sprites are used
+                // Change rotation of sprite in launch direction
                 if (launchDirection.x > 0)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    characterManager.transform.eulerAngles = new Vector3(0, 0, 0);
                 }
                 else
                 {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    characterManager.transform.eulerAngles = new Vector3(0, 180, 0);
                 }
-                */
 
                 // Activate the launch
                 isLaunching = true;
@@ -131,10 +134,30 @@ public class RollyPolly : PlayableCharacter
             {
                 // Cancel input so it doesn't repeat
                 finishedLaunch = false;
-
-                // TEMPORARY: The player turns back into a square
-                spriteRenderer.sprite = squareSprite;
             }
+        }
+    }
+
+    private void HandleAnimations()
+    {
+        if (inputManager.isChoosingLaunchDirection || inputManager.preformLaunch || isLaunching)
+        {
+            animator.SetBool("isGrounded", false);
+        }
+        else
+        {
+            animator.SetBool("isGrounded", characterManager.IsGrounded());
+        }
+
+        if (characterManager.IsGrounded())
+        {
+            boxCollider.enabled = true;
+            circleCollider.enabled = false;
+        }
+        else if (!characterManager.IsGrounded())
+        {
+            boxCollider.enabled = false;
+            circleCollider.enabled = true;
         }
     }
 }

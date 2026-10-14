@@ -16,4 +16,19 @@ public abstract class Trap : MonoBehaviour, IDamagable
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject whatIDamage = collision.gameObject;
+
+        if (whatIDamage.CompareTag("Player"))
+        {
+            ApplyDamage(whatIDamage.GetComponent<IDamagable>());
+
+            if (whatIDamage.GetComponent<CharacterManager>().currentHP <= 0)
+            {
+                whatIDamage.GetComponent<IDamagable>().Die();
+            }
+        }
+    }
 }

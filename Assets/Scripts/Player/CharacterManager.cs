@@ -5,6 +5,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
 {
     // References
     PlayerInputManager inputManager;
+    Rigidbody2D rb;
 
     [Header("Player Health")]
     [SerializeField] int maxHP = 3;
@@ -13,6 +14,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
     [Header("Character Flags")]
     public bool isDoingAction;
+    public bool isTouchingGround;
 
     [Header("Ground Check Variables")]
     [SerializeField] LayerMask groundLayer;
@@ -28,6 +30,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
     {
         // Asign relevant references within the code
         inputManager = GetComponent<PlayerInputManager>();
+        rb = GetComponent<Rigidbody2D>();
         
         // Start with selected character
         SwitchCharacters();
@@ -39,6 +42,8 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
     private void Update()
     {
+        isTouchingGround = IsGrounded();
+
         if (!isDead)
         {
             // Logic to handle character switching
@@ -50,7 +55,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
     // Returns a true or false result
     public bool IsGrounded()
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.45f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(2, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
 
     // Method to handle character switching logic
@@ -116,24 +121,25 @@ public class CharacterManager : MonoBehaviour, IDamagable
                 Debug.Log("Error");
                 break;
         }
-
     }
 
     void IDamagable.TakeDamage(int howMuch)
     {
         currentHP = currentHP - howMuch;
-        StartCoroutine(FlashRed());
+        //StartCoroutine(FlashRed());
     }
 
     void IDamagable.Die()
     {
         isDead = true;
         currentHP = 0;
+        rb.linearVelocity = Vector3.zero;
+        transform.eulerAngles = new Vector3(180, 0, 0);
     }
-
+    /*
     IEnumerator FlashRed()
     {
         yield return null;
-    }
+    }*/
 }
 
