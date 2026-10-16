@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Burr : Trap
 {
-    protected override void ApplyDamage(IDamagable damagable)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        base.ApplyDamage(damagable);
+        if (!collision.gameObject.GetComponentInParent<CharacterManager>().isInvincible)
+        {
+            base.OnCollisionEnter2D(collision);
+        }
     }
 }

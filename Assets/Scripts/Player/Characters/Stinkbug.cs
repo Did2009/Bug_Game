@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Stinkbug : PlayableCharacter
@@ -15,7 +16,7 @@ public class Stinkbug : PlayableCharacter
         // Determines the stinkbug's jumping power
         jumpingPower = 6.5f;
 
-        // Hide spray components at the beginning
+        // Disable the spray's components
         spraySpriteRenderer.enabled = false;
         sprayBoxCollider.enabled = false;
     }
@@ -27,6 +28,7 @@ public class Stinkbug : PlayableCharacter
         HandleSpray();
     }
 
+    // Method to handle the stinbug's spray
     private void HandleSpray()
     {
         if (inputManager.preformSpray)
@@ -34,8 +36,23 @@ public class Stinkbug : PlayableCharacter
             // Turn off input so it doesn't repeat
             inputManager.preformSpray = false;
 
+            // Enable the spray's components
             spraySpriteRenderer.enabled = true;
             sprayBoxCollider.enabled = true;
+
+            // Start coroutine to disable spray visibilty
+            StartCoroutine("WaitThenDisappear");
         }
+    }
+
+    // Coroutine to limit spray visibility length
+    IEnumerator WaitThenDisappear()
+    {
+        // Wait for 0.15 seconds
+        yield return new WaitForSeconds(0.15f);
+
+        // Disable the spray's components
+        sprayBoxCollider.enabled = false;
+        spraySpriteRenderer.enabled = false;
     }
 }

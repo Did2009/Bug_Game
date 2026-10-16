@@ -9,6 +9,6 @@ public class Web : Trap
 
     protected override void ApplyDamage(IDamagable damagable)
     {
-        
+
     }
 }

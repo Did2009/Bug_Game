@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 public class RollyPolly : PlayableCharacter
 {
     // References:
-    SpriteRenderer spriteRenderer;
     Animator animator;
     BoxCollider2D boxCollider;
     CircleCollider2D circleCollider;
@@ -24,7 +23,6 @@ public class RollyPolly : PlayableCharacter
         base.Start();
 
         // Assign References:
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
@@ -85,24 +83,26 @@ public class RollyPolly : PlayableCharacter
                 launchDirection.z = 0;
                 launchDirection = launchDirection.normalized;
 
-                // Change rotation of sprite in launch direction
-                if (launchDirection.x > 0)
-                {
-                    characterManager.transform.eulerAngles = new Vector3(0, 0, 0);
-                }
-                else
-                {
-                    characterManager.transform.eulerAngles = new Vector3(0, 180, 0);
-                }
-
                 // Activate the launch
                 isLaunching = true;
+                // Turn on invicibility
+                characterManager.isInvincible = true;
             }
         }
 
         // When a launch is preformed
         if (isLaunching)
         {
+            // Change rotation of sprite in launch direction
+            if (launchDirection.x > 0)
+            {
+                characterManager.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                characterManager.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+
             // While timer is above 0
             if (launchTime > 0)
             {
@@ -116,12 +116,15 @@ public class RollyPolly : PlayableCharacter
             {
                 // Cancel input so it doesn't repeat
                 isLaunching = false;
+                // Turn off invicibility
+                characterManager.isInvincible = false;
                 // Cancel action flag so the player can make other actions
                 characterManager.isDoingAction = false;
                 // Reset the timer
                 launchTime = launchTimeReset;
                 // Return the player's usual movement controls
                 parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, 0);
+                // Start post launch flag
                 finishedLaunch = true;
             }
         }

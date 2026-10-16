@@ -38,7 +38,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         }
     }
 
-    // Method to move the player left and right according to player inputs.
+    // Method to move the player left and right according to player inputs
     // Movement speed is different for each bug
     protected virtual void HandleMovement()
     {
@@ -69,20 +69,34 @@ public abstract class PlayableCharacter : MonoBehaviour
         }
     }
 
+    // Method to change the sprite directions to face when the player is moving
     protected virtual void HandleSpriteDirections()
     {
-        // Left and Right movement 
-        if (inputManager.movementInputX == 0)
+        if (!characterManager.isDoingAction)
         {
-            characterManager.transform.eulerAngles = characterManager.transform.eulerAngles;
-        }
-        else if (inputManager.movementInputX > 0)
-        {
-            characterManager.transform.eulerAngles = Vector3.zero;
+            // If the player is not moving:
+            if (inputManager.movementInputX == 0)
+            {
+                // Keep the sprites' direction exactly as it was before
+                characterManager.transform.eulerAngles = characterManager.transform.eulerAngles;
+            }
+            // If the player is moving right
+            else if (inputManager.movementInputX > 0)
+            {
+                // Make the sprites look to the right
+                characterManager.transform.eulerAngles = Vector3.zero;
+            }
+            // If the player is moving left
+            else
+            {
+                // Make the sprites look to the left
+                characterManager.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
         else
         {
-            characterManager.transform.eulerAngles = new Vector3(0, 180, 0);
+            // Keep the sprites' direction exactly as it was before
+            characterManager.transform.eulerAngles = characterManager.transform.eulerAngles;
         }
     }
 }
