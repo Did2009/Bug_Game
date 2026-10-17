@@ -295,11 +295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a89263737e5bdf49a434d0b0ba5c793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  playerUIManager: {fileID: 4951600368231993479, guid: 783af3b3b06a2644a8f16056db4e325f, type: 3}
   maxHP: 3
   currentHP: 0
   isDead: 0
   isDoingAction: 0
   isTouchingGround: 0
+  isInvincible: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

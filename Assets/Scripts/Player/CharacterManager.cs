@@ -6,13 +6,11 @@ public class CharacterManager : MonoBehaviour, IDamagable
     // References
     PlayerInputManager inputManager;
     Rigidbody2D rb;
+    public PlayerUIManager playerUIManager;
 
     [Header("Player Health")]
     [SerializeField] int maxHP = 3;
     public int currentHP;
-
-    [Header("Collectible Score")]
-    public int score = 0;
 
     [Header("Character Flags")]
     public bool isDead;
@@ -232,8 +230,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // Check if the colliding object's tag is "Collectible", if so:
         if (whatIDamage.CompareTag("Collectible"))
         {
-            // Increase score by one
-            score ++;
+            playerUIManager.IncreaseScore();
         }
     }
 
