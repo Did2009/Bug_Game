@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: a64d215258a919c43a3b6905e1388d65
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3398814698552074417
+    second: Web_V2_Sprite_Sheet_0
+  - first:
+      213: 7308543298317602253
+    second: Web_V2_Sprite_Sheet_1
+  - first:
+      213: -5255412390613489090
+    second: Web_V2_Sprite_Sheet_2
+  - first:
+      213: -8708611447063683324
+    second: Web_V2_Sprite_Sheet_3
+  - first:
+      213: -4711609892093610739
+    second: Web_V2_Sprite_Sheet_4
+  - first:
+      213: -4337937253764343274
+    second: Web_V2_Sprite_Sheet_5
+  - first:
+      213: 3046843294600274240
+    second: Web_V2_Sprite_Sheet_6
+  - first:
+      213: -1552312754703605993
+    second: Web_V2_Sprite_Sheet_7
+  - first:
+      213: 8288893896914720405
+    second: Web_V2_Sprite_Sheet_8
+  - first:
+      213: -7724521923913241361
+    second: Web_V2_Sprite_Sheet_9
+  - first:
+      213: -6736097442406584990
+    second: Web_V2_Sprite_Sheet_10
+  - first:
+      213: 8174285755750007381
+    second: Web_V2_Sprite_Sheet_11
+  - first:
+      213: -3376824977297227932
+    second: Web_V2_Sprite_Sheet_12
+  - first:
+      213: 721207202121092559
+    second: Web_V2_Sprite_Sheet_13
+  - first:
+      213: 6299130181808269842
+    second: Web_V2_Sprite_Sheet_14
+  - first:
+      213: 3842607008184877977
+    second: Web_V2_Sprite_Sheet_15
+  - first:
+      213: -3576963806644277684
+    second: Web_V2_Sprite_Sheet_16
+  - first:
+      213: 922146952792654547
+    second: Web_V2_Sprite_Sheet_17
+  - first:
+      213: 7539174003799930842
+    second: Web_V2_Sprite_Sheet_18
+  - first:
+      213: 4684325208333928948
+    second: Web_V2_Sprite_Sheet_19
+  - first:
+      213: 4179620394898847162
+    second: Web_V2_Sprite_Sheet_20
+  - first:
+      213: 1958390716712574657
+    second: Web_V2_Sprite_Sheet_21
+  - first:
+      213: -6434932203901457371
+    second: Web_V2_Sprite_Sheet_22
+  - first:
+      213: 6870779719991941541
+    second: Web_V2_Sprite_Sheet_23
+  - first:
+      213: -6158288226667655177
+    second: Web_V2_Sprite_Sheet_24
+  - first:
+      213: 6567752471655939640
+    second: Web_V2_Sprite_Sheet_25
+  - first:
+      213: 5402576803686221307
+    second: Web_V2_Sprite_Sheet_26
+  - first:
+      213: 5729543128263367208
+    second: Web_V2_Sprite_Sheet_27
+  - first:
+      213: -6825324248942699201
+    second: Web_V2_Sprite_Sheet_28
+  - first:
+      213: 8592896049823692325
+    second: Web_V2_Sprite_Sheet_29
+  - first:
+      213: -2049789504487686030
+    second: Web_V2_Sprite_Sheet_30
+  - first:
+      213: -9104669994460735988
+    second: Web_V2_Sprite_Sheet_31
+  - first:
+      213: 427704247869610838
+    second: Web_V2_Sprite_Sheet_32
+  - first:
+      213: 4604391185472757202
+    second: Web_V2_Sprite_Sheet_33
+  - first:
+      213: 1901001449014578442
+    second: Web_V2_Sprite_Sheet_34
+  - first:
+      213: 5289182871366675785
+    second: Web_V2_Sprite_Sheet_35
+  - first:
+      213: -7949115369493504541
+    second: Web_V2_Sprite_Sheet_36
+  - first:
+      213: 7123683762643063986
+    second: Web_V2_Sprite_Sheet_37
+  - first:
+      213: -8498507856429342179
+    second: Web_V2_Sprite_Sheet_38
+  - first:
+      213: -5343918622730183335
+    second: Web_V2_Sprite_Sheet_39
+  - first:
+      213: -2785066908050255026
+    second: Web_V2_Sprite_Sheet_40
+  - first:
+      213: -3821121544153586435
+    second: Web_V2_Sprite_Sheet_41
+  - first:
+      213: 8465363041490609757
+    second: Web_V2_Sprite_Sheet_42
+  - first:
+      213: -2518545462684064059
+    second: Web_V2_Sprite_Sheet_43
+  - first:
+      213: -1410181203844833640
+    second: Web_V2_Sprite_Sheet_44
+  - first:
+      213: -8715804800003559563
+    second: Web_V2_Sprite_Sheet_45
+  - first:
+      213: 7379502454501643607
+    second: Web_V2_Sprite_Sheet_46
+  - first:
+      213: 3886669826250706050
+    second: Web_V2_Sprite_Sheet_47
+  - first:
+      213: 2756140970061893154
+    second: Web_V2_Sprite_Sheet_48
+  - first:
+      213: -6188563139207640462
+    second: Web_V2_Sprite_Sheet_49
+  - first:
+      213: -3715285260365219087
+    second: Web_V2_Sprite_Sheet_50
+  - first:
+      213: 7020380588584502214
+    second: Web_V2_Sprite_Sheet_51
+  - first:
+      213: -1731385330325729199
+    second: Web_V2_Sprite_Sheet_52
+  - first:
+      213: 8717471376287796179
+    second: Web_V2_Sprite_Sheet_53
+  - first:
+      213: 4041199459405540724
+    second: Web_V2_Sprite_Sheet_54
+  - first:
+      213: -4079471260816217819
+    second: Web_V2_Sprite_Sheet_55
+  - first:
+      213: 2223829338256092839
+    second: Web_V2_Sprite_Sheet_56
+  - first:
+      213: -4164674960664432658
+    second: Web_V2_Sprite_Sheet_57
+  - first:
+      213: 3443036033628135522
+    second: Web_V2_Sprite_Sheet_58
+  - first:
+      213: 3688596238446486335
+    second: Web_V2_Sprite_Sheet_59
+  - first:
+      213: -539575279111949484
+    second: Web_V2_Sprite_Sheet_60
+  - first:
+      213: 7189835396891937387
+    second: Web_V2_Sprite_Sheet_61
+  - first:
+      213: 8960643531872113620
+    second: Web_V2_Sprite_Sheet_62
+  - first:
+      213: -1468708195184818347
+    second: Web_V2_Sprite_Sheet_63
+  - first:
+      213: -517979373196619283
+    second: Web_V2_Sprite_Sheet_64
+  - first:
+      213: -3595298972017647458
+    second: Web_V2_Sprite_Sheet_65
+  - first:
+      213: -3118202847885805793
+    second: Web_V2_Sprite_Sheet_66
+  - first:
+      213: 7413741963690204982
+    second: Web_V2_Sprite_Sheet_67
+  - first:
+      213: 2890351450958256020
+    second: Web_V2_Sprite_Sheet_68
+  - first:
+      213: -7248151358003297617
+    second: Web_V2_Sprite_Sheet_69
+  - first:
+      213: -6884351906085711962
+    second: Web_V2_Sprite_Sheet_70
+  - first:
+      213: 4347209280617349427
+    second: Web_V2_Sprite_Sheet_71
+  - first:
+      213: -3305223771629760729
+    second: Web_V2_Sprite_Sheet_72
+  - first:
+      213: -1474658987305324951
+    second: Web_V2_Sprite_Sheet_73
+  - first:
+      213: -1665327007206697243
+    second: Web_V2_Sprite_Sheet_74
+  - first:
+      213: -4851618364140114520
+    second: Web_V2_Sprite_Sheet_75
+  - first:
+      213: -6476210268692835319
+    second: Web_V2_Sprite_Sheet_76
+  - first:
+      213: 3357187919650307099
+    second: Web_V2_Sprite_Sheet_77
+  - first:
+      213: -4387963755054096833
+    second: Web_V2_Sprite_Sheet_78
+  - first:
+      213: 3951744771668494368
+    second: Web_V2_Sprite_Sheet_79
+  - first:
+      213: 4340273490742728965
+    second: Web_V2_Sprite_Sheet_80
+  - first:
+      213: -820155738875473583
+    second: Web_V2_Sprite_Sheet_81
+  - first:
+      213: -8551842081535379321
+    second: Web_V2_Sprite_Sheet_82
+  - first:
+      213: 8607351418566560701
+    second: Web_V2_Sprite_Sheet_83
+  - first:
+      213: -2372325696582517552
+    second: Web_V2_Sprite_Sheet_84
+  - first:
+      213: 4934016526478559039
+    second: Web_V2_Sprite_Sheet_85
+  - first:
+      213: 3658444726698052425
+    second: Web_V2_Sprite_Sheet_86
+  - first:
+      213: -3542698010270315461
+    second: Web_V2_Sprite_Sheet_87
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 350
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Web_V2_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 748
+        height: 748
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b0a29ce5f30b2f20800000000000000
+      internalID: 3398814698552074417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Web_V2_Sprite_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 0
+        width: 748
+        height: 748
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd48c158692d6560800000000000000
+      internalID: 7308543298317602253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Web_V2_Sprite_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 0
+        width: 748
+        height: 748
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3aeb4d66460117b0800000000000000
+      internalID: -5255412390613489090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Web_V2_Sprite_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2244
+        y: 0
+        width: 748
+        height: 748
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f5ed2770cc42780800000000000000
+      internalID: -8708611447063683324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e0dc04e37d36f7945b1fc375d44d552c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":748.0,"y":748.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Web_V2_Sprite_Sheet_0: 3398814698552074417
+      Web_V2_Sprite_Sheet_1: 7308543298317602253
+      Web_V2_Sprite_Sheet_2: -5255412390613489090
+      Web_V2_Sprite_Sheet_3: -8708611447063683324
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

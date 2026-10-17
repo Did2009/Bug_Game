@@ -10,7 +10,9 @@ public class CharacterManager : MonoBehaviour, IDamagable
     [Header("Player Health")]
     [SerializeField] int maxHP = 3;
     public int currentHP;
-    
+
+    [Header("Collectible Score")]
+    public int score = 0;
 
     [Header("Character Flags")]
     public bool isDead;
@@ -193,7 +195,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // Flip player on his back
         transform.eulerAngles = new Vector3(180, 0, 0);
 
-        // TEMPORARY: Makes player jump when they die
+        // Makes player jump when they die
         rb.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
     }
 
@@ -203,7 +205,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
         damagable.TakeDamage(1);
     }
 
-    // Method that activates when a collider enters the player's spray trigger
+    // Method that activates when a collider enters a trigger (stinkbug spray or collectibles)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Asign the colliding GameObject to a variable
@@ -225,6 +227,13 @@ public class CharacterManager : MonoBehaviour, IDamagable
                 // Activate web death
                 webDamagable.Die();
             }
+        }
+
+        // Check if the colliding object's tag is "Collectible", if so:
+        if (whatIDamage.CompareTag("Collectible"))
+        {
+            // Increase score by one
+            score ++;
         }
     }
 
