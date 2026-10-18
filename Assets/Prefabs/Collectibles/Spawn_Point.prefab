@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7414775288728951012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8511273763936749078}
+  - component: {fileID: 1706587571966075379}
+  m_Layer: 0
+  m_Name: Spawn_Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8511273763936749078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414775288728951012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.5, y: 0.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706587571966075379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414775288728951012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96657fa5bd75baf4d9de5e6b470cc4a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
+  collectibleAntsVariables:
+  - {fileID: 3449839781820603842, guid: 6390dc4e54fe4ad428b74405915fe94c, type: 3}
+  - {fileID: 2536337924135147568, guid: 31d96d34718e0144f8916e5f891c3753, type: 3}
+  - {fileID: 2944643923281149321, guid: d809549418b23e945b1d1e76f06407ba, type: 3}
+  - {fileID: 3456233709703900246, guid: 660d08a63ff49704998bdc88902fa503, type: 3}
+  - {fileID: 8543608187636082004, guid: 0048c1efb071ab74bb4b39b600f084c3, type: 3}
+  - {fileID: 1481142763832823791, guid: d55a2fb0b57de54478624c23bc3b732e, type: 3}
+  - {fileID: 6918201680601426000, guid: da113e9f196742345b4f2be69a964afa, type: 3}
+  - {fileID: 3858432600697744805, guid: 96907a7ecea03f54faf726de1fa291b2, type: 3}

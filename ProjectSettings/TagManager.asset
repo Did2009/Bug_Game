@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Stinkbug
-  - RollyPolly
-  - Butterfly
+  - Web
+  - Burr
+  - Collectible
   layers:
   - Default
   - TransparentFX
