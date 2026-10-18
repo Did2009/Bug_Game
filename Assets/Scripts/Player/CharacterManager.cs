@@ -108,7 +108,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
                 break;
             case 2: // Rolly polly
                 // Reset Rolly Polly Launch
-                inputManager.isChoosingLaunchDirection = false;
+                inputManager.chooseLaunchDirection = false;
                 inputManager.preformLaunch = false;
 
                 // Set Rolly Polly as active character

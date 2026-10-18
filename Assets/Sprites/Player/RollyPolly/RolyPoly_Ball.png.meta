@@ -1,0 +1,496 @@
+fileFormatVersion: 2
+guid: eea2f52b6f5ed714fb89be79dcf02535
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1630121045454427756
+    second: RolyPoly_Ball_0
+  - first:
+      213: -2857562112646617358
+    second: RolyPoly_Ball_1
+  - first:
+      213: 1827059610654887709
+    second: RolyPoly_Ball_2
+  - first:
+      213: 3639227325754688890
+    second: RolyPoly_Ball_3
+  - first:
+      213: -4117709382519114110
+    second: RolyPoly_Ball_4
+  - first:
+      213: 7337296008383252524
+    second: RolyPoly_Ball_5
+  - first:
+      213: -2098741504606019688
+    second: RolyPoly_Ball_6
+  - first:
+      213: -1197101028231852023
+    second: RolyPoly_Ball_7
+  - first:
+      213: -7377897445441328498
+    second: RolyPoly_Ball_8
+  - first:
+      213: 6731592856547343534
+    second: RolyPoly_Ball_9
+  - first:
+      213: 6348033055691880111
+    second: RolyPoly_Ball_10
+  - first:
+      213: -2604835673740066412
+    second: RolyPoly_Ball_11
+  - first:
+      213: -4062662155412336412
+    second: RolyPoly_Ball_12
+  - first:
+      213: 8678375958264064436
+    second: RolyPoly_Ball_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 180
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rolly_Polly_Idle_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c66133f347a5f9610800000000000000
+      internalID: 1630121045454427756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_01
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f665180666e758d0800000000000000
+      internalID: -2857562112646617358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_02
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1f4c8429050b5910800000000000000
+      internalID: 1827059610654887709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_03
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75c088a8f1218230800000000000000
+      internalID: 3639227325754688890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_04
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 286b7a61225fad6c0800000000000000
+      internalID: -4117709382519114110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_05
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c28439f48df43d560800000000000000
+      internalID: 7337296008383252524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_06
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 424
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89fd69e98b5cfd2e0800000000000000
+      internalID: -2098741504606019688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_07
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9005cf315fa036fe0800000000000000
+      internalID: -1197101028231852023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_08
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 0
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a2537fc517c9990800000000000000
+      internalID: -7377897445441328498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Curl_09
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 0
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eacbf0b990c6b6d50800000000000000
+      internalID: 6731592856547343534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Spin_01
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 0
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa6b3fa4e6eb81850800000000000000
+      internalID: 6348033055691880111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Spin_02
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 4
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 491457871c3c9dbd0800000000000000
+      internalID: -2604835673740066412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Spin_03
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 0
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e099386b468e97c0800000000000000
+      internalID: -4062662155412336412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rolly_Polly_Spin_04
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 0
+        width: 424
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9ae9b34f8cf6870800000000000000
+      internalID: 8678375958264064436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9be01d2846b291449b04f0f4832096f6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":424.0,"y":424.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Rolly_Polly_Curl_01: -2857562112646617358
+      Rolly_Polly_Curl_02: 1827059610654887709
+      Rolly_Polly_Curl_03: 3639227325754688890
+      Rolly_Polly_Curl_04: -4117709382519114110
+      Rolly_Polly_Curl_05: 7337296008383252524
+      Rolly_Polly_Curl_06: -2098741504606019688
+      Rolly_Polly_Curl_07: -1197101028231852023
+      Rolly_Polly_Curl_08: -7377897445441328498
+      Rolly_Polly_Curl_09: 6731592856547343534
+      Rolly_Polly_Idle_01: 1630121045454427756
+      Rolly_Polly_Spin_01: 6348033055691880111
+      Rolly_Polly_Spin_02: -2604835673740066412
+      Rolly_Polly_Spin_03: -4062662155412336412
+      Rolly_Polly_Spin_04: 8678375958264064436
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
