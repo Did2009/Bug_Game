@@ -18,10 +18,10 @@ public class Butterfly : PlayableCharacter
 
     protected override void Update()
     {
+        base.Update();
+
         if (!characterManager.isDead)
         {
-            HandleMovement();
-            HandleSpriteDirections();
             HandleFlying();
         }
     }

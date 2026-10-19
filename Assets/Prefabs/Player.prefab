@@ -58,8 +58,8 @@ Transform:
   m_GameObject: {fileID: 3459740254190406609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.56, y: -0.11, z: 0}
-  m_LocalScale: {x: 1, y: 3.3859377, z: 1}
+  m_LocalPosition: {x: 2.27, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 3.8171158, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7833397871942772415}
@@ -130,7 +130,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3459740254190406609}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0, y: 0.16756481}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -167,7 +167,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.91246295}
   m_EdgeRadius: 0
 --- !u!1 &4143511675371846509
 GameObject:
@@ -280,7 +280,7 @@ MonoBehaviour:
   movementInputX: 0
   isJumping: 0
   switchCharacters: 0
-  isChoosingLaunchDirection: 0
+  chooseLaunchDirection: 0
   preformLaunch: 0
   preformSpray: 0
 --- !u!114 &3642257889961628960
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a89263737e5bdf49a434d0b0ba5c793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
-  playerUIManager: {fileID: 4951600368231993479, guid: 783af3b3b06a2644a8f16056db4e325f, type: 3}
+  playerUIManager: {fileID: 0}
   maxHP: 3
   currentHP: 0
   isDead: 0
@@ -310,6 +310,10 @@ MonoBehaviour:
   stinkbug: {fileID: 5701389764144504390}
   rollyPolly: {fileID: 7539796503046171868}
   butterfly: {fileID: 7455586990318107240}
+  knockbackForce: 3
+  knockbackCounter: 0
+  knockbackTotalTime: 0.2
+  knockFromRight: 0
 --- !u!1 &5438671319134690860
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +341,7 @@ Transform:
   m_GameObject: {fileID: 5438671319134690860}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -392,12 +396,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4346244404228752641, guid: cfbc25c39c0657749aa5babffecffaae, type: 3}
+  m_Sprite: {fileID: -626087476257909385, guid: c50ad14656afc1c40be5b312a74d2193, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1.12}
+  m_Size: {x: 1.5916667, y: 1.1333333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -426,13 +430,14 @@ GameObject:
   - component: {fileID: 3595615223143762730}
   - component: {fileID: 9115732358414926329}
   - component: {fileID: 7114188347851102778}
+  - component: {fileID: 2627765969891504323}
   m_Layer: 0
   m_Name: Stinkbug
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7833397871942772415
 Transform:
   m_ObjectHideFlags: 0
@@ -442,7 +447,7 @@ Transform:
   m_GameObject: {fileID: 5701389764144504390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -0.36, z: 0}
+  m_LocalPosition: {x: 0.07, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -498,7 +503,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2192894930701862373, guid: 0ce033b8c26b2bf4dae8f63a9789cfda, type: 3}
+  m_Sprite: {fileID: -3499943244764308205, guid: 501e8386a5912c34fa315209c2f83ae4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -542,11 +547,11 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.14999998, y: 0.009268582}
+  m_Offset: {x: -0.06, y: 0.009268582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.3106227, y: 1.1555555}
+    oldSize: {x: 2.3722222, y: 2.3671272}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -570,6 +575,28 @@ MonoBehaviour:
   jumpingPower: 0
   spraySpriteRenderer: {fileID: 857008210790828995}
   sprayBoxCollider: {fileID: 958120206421010895}
+--- !u!95 &2627765969891504323
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701389764144504390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24f2521db93d3ac4aa37592bed3627eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7455586990318107240
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,13 +609,14 @@ GameObject:
   - component: {fileID: 5239659272546504028}
   - component: {fileID: 4416940674656640874}
   - component: {fileID: 3654513510909777419}
+  - component: {fileID: 852114898387087130}
   m_Layer: 0
   m_Name: Butterfly
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3818975239344064926
 Transform:
   m_ObjectHideFlags: 0
@@ -724,6 +752,28 @@ MonoBehaviour:
   movementSpeed: 0
   jumpingPower: 0
   numberOfFlaps: 0
+--- !u!95 &852114898387087130
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455586990318107240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d473573f08545f74a90ec3667b2a5cbb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7539796503046171868
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7324300318183231569
 Transform:
   m_ObjectHideFlags: 0
@@ -900,8 +950,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.38
+  m_Offset: {x: 0.03, y: -0.3}
+  m_Radius: 0.32
 --- !u!114 &6869204698690010911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,12 +966,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RollyPolly
   movementSpeed: 0
   jumpingPower: 0
+  isCurrentlyChoosingDierction: 0
   isLaunching: 0
+  readyToLaunch: 0
   launchDirection: {x: 0, y: 0, z: 0}
   launchPower: 20
   launchTime: 0.2
   arrowRenderer: {fileID: 4185212429989885015}
-  finishedLaunch: 0
 --- !u!95 &5642363887976277822
 Animator:
   serializedVersion: 7

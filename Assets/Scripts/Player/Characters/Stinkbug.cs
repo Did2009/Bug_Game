@@ -24,8 +24,12 @@ public class Stinkbug : PlayableCharacter
     protected override void Update()
     {
         base.Update();
+        if (!characterManager.isDead)
+        {
+            HandleJumping();
 
-        HandleSpray();
+            HandleSpray();
+        }
     }
 
     // Method to handle the stinbug's spray
@@ -36,13 +40,27 @@ public class Stinkbug : PlayableCharacter
             // Turn off input so it doesn't repeat
             inputManager.preformSpray = false;
 
-            // Enable the spray's components
-            spraySpriteRenderer.enabled = true;
-            sprayBoxCollider.enabled = true;
+            // Enable spray only when character is grounded
+            if (characterManager.IsGrounded())
+            {
+                // Activate is doing action flag
+                characterManager.isDoingAction = true;
 
-            // Start coroutine to disable spray visibilty
-            StartCoroutine("WaitThenDisappear");
+                // Play Spray animation
+                animator.Play("Spray");
+            }
         }
+    }
+
+    // Method timed with animation to activate spray
+    public void StartSpray()
+    {
+        // Enable the spray's components
+        spraySpriteRenderer.enabled = true;
+        sprayBoxCollider.enabled = true;
+
+        // Start coroutine to disable spray visibilty
+        StartCoroutine("WaitThenDisappear");
     }
 
     // Coroutine to limit spray visibility length

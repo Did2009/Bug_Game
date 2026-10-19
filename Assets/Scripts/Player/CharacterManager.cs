@@ -28,6 +28,12 @@ public class CharacterManager : MonoBehaviour, IDamagable
     public GameObject rollyPolly;
     public GameObject butterfly;
 
+    [Header("Knockback Variables")]
+    public float knockbackForce = 3;
+    public float knockbackCounter;
+    public float knockbackTotalTime = 0.2f;
+    public bool knockFromRight;
+
     private void Start()
     {
         // Asign relevant references within the code
@@ -184,26 +190,42 @@ public class CharacterManager : MonoBehaviour, IDamagable
     // Method that is called when the player dies
     void IDamagable.Die()
     {
-        // Activate death flag
+        // Activate death flag, stopping all other methods
         isDead = true;
+
         // Set hp to zero
         currentHP = 0;
+
         // Stop player movement
         rb.linearVelocity = Vector3.zero;
+
         // Flip player on his back
         transform.eulerAngles = new Vector3(180, 0, 0);
 
-        // Makes player jump when they die
-        rb.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
+        // Stops player from sliding
+        rb.sharedMaterial = null;
+
+        // Start coroutine for showing game over screen
+        StartCoroutine(DelayBeforeShowingGameOverScreen());
+    }
+
+    // Coroutine that shows the game over screen after a delay
+    IEnumerator DelayBeforeShowingGameOverScreen()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        playerUIManager.ShowGameOverScreen();
+
+        yield return null;
     }
 
     // Method that is called when the player deals damage to a trap
-    public void ApplyDamage(IDamagable damagable)
+    public void ApplyDamageToTrap(IDamagable damagable)
     {
         damagable.TakeDamage(1);
     }
 
-    // Method that activates when a collider enters a trigger (stinkbug spray or collectibles)
+    // Method that activates when the Stinkbug sprays
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Asign the colliding GameObject to a variable
@@ -217,7 +239,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             Web webScript = whatIDamage.GetComponent<Web>();
 
             // Apply damage to the web
-            ApplyDamage(webDamagable);
+            ApplyDamageToTrap(webDamagable);
 
             // Check if the web's health is zero or lower, if so:
             if (webScript.health <= 0)
@@ -225,12 +247,6 @@ public class CharacterManager : MonoBehaviour, IDamagable
                 // Activate web death
                 webDamagable.Die();
             }
-        }
-
-        // Check if the colliding object's tag is "Collectible", if so:
-        if (whatIDamage.CompareTag("Collectible"))
-        {
-            playerUIManager.IncreaseScore();
         }
     }
 
@@ -248,7 +264,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             Burr burrScript = whatIDamage.GetComponent<Burr>();
 
             // Apply damage to the web
-            ApplyDamage(burrDamagable);
+            ApplyDamageToTrap(burrDamagable);
 
             // Check if the web's health is zero or lower, if so:
             if (burrScript.health <= 0)

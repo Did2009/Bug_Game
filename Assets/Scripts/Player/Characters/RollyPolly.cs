@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 public class RollyPolly : PlayableCharacter
 {
     // References:
-    Animator animator;
     BoxCollider2D boxCollider;
     CircleCollider2D circleCollider;
 
@@ -29,7 +28,6 @@ public class RollyPolly : PlayableCharacter
         base.Start();
 
         // Assign References:
-        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
 
@@ -53,9 +51,11 @@ public class RollyPolly : PlayableCharacter
 
         if (!characterManager.isDead)
         {
+            HandleJumping();
+            HandleJumpingAnimations();
+
             HandlelaunchingPreparation();
             PerformLaunch();
-            HandleJumpingAnimations();
         } 
     }
 

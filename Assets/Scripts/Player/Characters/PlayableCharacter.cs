@@ -8,6 +8,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     protected PlayerInputManager inputManager;
     protected CharacterManager characterManager;
     protected Rigidbody2D parentRb;
+    protected Animator animator;
 
     // Variables
     [Header("Character Variables")]
@@ -18,53 +19,80 @@ public abstract class PlayableCharacter : MonoBehaviour
 
     protected virtual void Start()
     {
-        // Asign relevant references within the code
+        // Asign shared references within the code
         inputManager = GetComponentInParent<PlayerInputManager>();
         characterManager = GetComponentInParent<CharacterManager>();
         parentRb = GetComponentInParent<Rigidbody2D>();
+        animator = GetComponentInParent<Animator>();
     }
 
     protected virtual void Update()
     {
+        HandleMovementAndKnockback();
+
         if (!characterManager.isDead)
         {
-            HandleMovement();
-            HandleSpriteDirections();
-
-            if (inputManager.isJumping)
-            {
-                HandleJump();
-            }
+            HandleSpriteDirections(); 
         }
     }
 
     // Method to move the player left and right according to player inputs
     // Movement speed is different for each bug
-    protected virtual void HandleMovement()
+    protected virtual void HandleMovementAndKnockback()
     {
-        // Makes sure the player can't move while doing an action
-        if (!characterManager.isDoingAction)
+        // Disable player movement when knocked back from damage
+        if (characterManager.knockbackCounter <= 0)
         {
-            parentRb.linearVelocity = new Vector2(inputManager.movementInputX * movementSpeed, parentRb.linearVelocity.y);
+            // Disable player movement when doing an action
+            if (!characterManager.isDoingAction)
+            {
+                // Stops the player from moving when dead, but enables the final pushback
+                if (!characterManager.isDead)
+                {
+                    // Normal player movement
+                    parentRb.linearVelocity = new Vector2(inputManager.movementInputX * movementSpeed, parentRb.linearVelocity.y);
+                }
+            }
         }
+        // If knockback is in effect
+        else
+        {
+            if (characterManager.knockFromRight)
+            {
+                // Apply negative knockback movement
+                parentRb.linearVelocity = new Vector2(-characterManager.knockbackForce, characterManager.knockbackForce);
+            }
+            if (!characterManager.knockFromRight)
+            {
+                // Apply knockback movement
+                parentRb.linearVelocity = new Vector2(characterManager.knockbackForce, characterManager.knockbackForce);
+            }
+
+            // Lower timer
+            characterManager.knockbackCounter -= Time.deltaTime;
+        }
+        
     }
 
     // Method to make the player jump
     // Jumping power is different for each bug
-    protected virtual void HandleJump()
+    protected virtual void HandleJumping()
     {
-        // Turns off input
-        inputManager.isJumping = false;
-
-        // Makes sure the player can't jump while doing an action
-        if (!characterManager.isDoingAction)
+        if (inputManager.isJumping)
         {
-            // Checks if the player is grounded
-            // Prevents the player from jumping in mid-air
-            if (characterManager.IsGrounded())
+            // Turns off input
+            inputManager.isJumping = false;
+
+            // Makes sure the player can't jump while doing an action
+            if (!characterManager.isDoingAction)
             {
-                // Makes the player jump
-                parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+                // Checks if the player is grounded
+                // Prevents the player from jumping in mid-air
+                if (characterManager.IsGrounded())
+                {
+                    // Makes the player jump
+                    parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+                }
             }
         }
     }

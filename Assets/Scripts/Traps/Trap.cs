@@ -10,26 +10,40 @@ public abstract class Trap : MonoBehaviour
     [SerializeField] protected int damageToInflict = 1;
 
     // Method that is called when a trap deals damage to the player
-    protected virtual void ApplyDamage(IDamagable damagable)
+    protected virtual void ApplyDamageToPlayer(IDamagable damagable, CharacterManager characterManager, Collision2D collision)
     {
+        // Start knockback
+        characterManager.knockbackCounter = characterManager.knockbackTotalTime;
+
+        // Decide to which side pushback occurs
+        if (collision.transform.position.x <= transform.position.x)
+        {
+            characterManager.knockFromRight = true;
+        }
+        if (collision.transform.position.x > transform.position.x)
+        {
+            characterManager.knockFromRight = false;
+        }
+
+        // Make player take damage
         damagable.TakeDamage(damageToInflict);
     }
 
     // Method that activates when an object collides with a trap
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        // Asign the colliding GameObject to a variable
+        // Assign the colliding GameObject to a variable
         GameObject whatIDamage = collision.gameObject;       
 
         // Check if the colliding object's tag is "Player", if so:
         if (whatIDamage.CompareTag("Player"))
         {
-            // Set IDamagable and CharacterManager to variables
+            // Assign IDamagable and CharacterManager to variables
             IDamagable playerDamagable = whatIDamage.GetComponent<IDamagable>();
-            CharacterManager characterManager = whatIDamage.GetComponentInParent<CharacterManager>();
+            CharacterManager characterManager = whatIDamage.GetComponentInParent<CharacterManager>();    
 
             // Apply damage to player
-            ApplyDamage(playerDamagable);
+            ApplyDamageToPlayer(playerDamagable, characterManager, collision);
 
             // Check if player's HP is zero or lower, if so:
             if (characterManager.currentHP <= 0)
