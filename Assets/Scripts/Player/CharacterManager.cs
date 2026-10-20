@@ -7,10 +7,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
     PlayerInputManager inputManager;
     Rigidbody2D rb;
     public PlayerUIManager playerUIManager;
-
-    [Header("Player Health")]
-    [SerializeField] int maxHP = 3;
-    public int currentHP;
+    public GameOverScreenManager gameOverScreenManager;
 
     [Header("Character Flags")]
     public bool isDead;
@@ -36,6 +33,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
     private void Start()
     {
+
         // Asign relevant references within the code
         inputManager = GetComponent<PlayerInputManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -43,8 +41,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // Start with selected character
         SwitchCharacters();
 
-        // Set Starting Health
-        currentHP = maxHP;
+        // Set death flag to false
         isDead = false;
     }
 
@@ -140,9 +137,11 @@ public class CharacterManager : MonoBehaviour, IDamagable
         if (!isDead)
         {
             // Decrease player health by input damage
-            currentHP = currentHP - howMuch;
+            playerUIManager.currentHP = playerUIManager.currentHP - howMuch;
             // Start damage indication coroutine
             StartCoroutine(FlashRed());
+            // Update health UI
+            playerUIManager.UpdateHealth();
         }
     }
 
@@ -194,7 +193,9 @@ public class CharacterManager : MonoBehaviour, IDamagable
         isDead = true;
 
         // Set hp to zero
-        currentHP = 0;
+        playerUIManager.currentHP = 0;
+        // Update health UI
+        playerUIManager.UpdateHealth();
 
         // Stop player movement
         rb.linearVelocity = Vector3.zero;
@@ -214,7 +215,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
     {
         yield return new WaitForSeconds(1.5f);
 
-        playerUIManager.ShowGameOverScreen();
+        gameOverScreenManager.ShowGameOverScreen();
 
         yield return null;
     }

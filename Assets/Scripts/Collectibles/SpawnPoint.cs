@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-
+    public SpriteRenderer indicator;
     public GameObject[] collectibleAntsVariables;
     public bool isRandom;
     int decideIfSpawning;
@@ -11,6 +11,8 @@ public class SpawnPoint : MonoBehaviour
 
     private void Start()
     {
+        indicator.enabled = false;
+
         // If the random flag is active, then:
         if (isRandom)
         {

@@ -40,13 +40,13 @@ public abstract class Trap : MonoBehaviour
         {
             // Assign IDamagable and CharacterManager to variables
             IDamagable playerDamagable = whatIDamage.GetComponent<IDamagable>();
-            CharacterManager characterManager = whatIDamage.GetComponentInParent<CharacterManager>();    
+            CharacterManager characterManager = whatIDamage.GetComponentInParent<CharacterManager>();   
 
             // Apply damage to player
             ApplyDamageToPlayer(playerDamagable, characterManager, collision);
 
             // Check if player's HP is zero or lower, if so:
-            if (characterManager.currentHP <= 0)
+            if (characterManager.playerUIManager.currentHP <= 0)
             {
                 // Activate player death
                 playerDamagable.Die();
