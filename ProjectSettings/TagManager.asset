@@ -44,5 +44,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background art
+    uniqueID: 1437931793
+    locked: 0
+  - name: background color far
+    uniqueID: 2043395449
+    locked: 0
+  - name: player
+    uniqueID: 591014667
+    locked: 0
+  - name: coliders
+    uniqueID: 368376871
+    locked: 0
+  - name: ground
+    uniqueID: 2555763503
+    locked: 0
+  - name: thornes art
+    uniqueID: 2560753231
+    locked: 0
   m_RenderingLayers:
   - Default
