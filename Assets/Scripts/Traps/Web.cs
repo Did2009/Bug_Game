@@ -17,9 +17,9 @@ public class Web : Trap, IDamagable
         animator.SetBool("isDestroyed", false);
     }
 
-    protected override void ApplyDamage(IDamagable damagable)
+    protected override void ApplyDamageToPlayer(IDamagable damagable, CharacterManager characterManager, Collision2D collision)
     {
-
+        // This obstacle doesn't cause damage to the player
     }
 
     // Method that is called when a trap is damaged

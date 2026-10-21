@@ -5,6 +5,7 @@ public class Collectible : MonoBehaviour
     // References
     Rigidbody2D rb;
     GameObject web;
+    PlayerUIManager playerUIManager;
 
     [Header("Web Spawning Variables")]
     [SerializeField] bool isOnWeb;
@@ -14,6 +15,7 @@ public class Collectible : MonoBehaviour
     {
         // Assign references
         rb = GetComponent<Rigidbody2D>();
+        playerUIManager = FindFirstObjectByType<PlayerUIManager>();
 
         isTrapped = false;
         rb.bodyType = RigidbodyType2D.Kinematic;
@@ -72,6 +74,9 @@ public class Collectible : MonoBehaviour
         // If the game object is the player
         if (collidingObject.CompareTag("Player"))
         {
+            // Increase Score
+            playerUIManager.IncreaseScore();
+
             // Destroy this game object
             GameObject.Destroy(gameObject);
         }

@@ -1,16 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour, IDamagable
 {
-    // References
+    [Header("References")]
+    DataManager dataManager;
     PlayerInputManager inputManager;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public PlayerUIManager playerUIManager;
-
-    [Header("Player Health")]
-    [SerializeField] int maxHP = 3;
-    public int currentHP;
+    public GameOverScreenManager gameOverScreenManager;
+    public MoveToNextScene moveToNextScene;
 
     [Header("Character Flags")]
     public bool isDead;
@@ -23,23 +23,41 @@ public class CharacterManager : MonoBehaviour, IDamagable
     [SerializeField] Transform groundCheck;
 
     [Header("Character Selection Variables")]
-    public int selectedCharacter = 1;
+    public int selectedCharacter;
     public GameObject stinkbug;
     public GameObject rollyPolly;
     public GameObject butterfly;
 
+    [Header("Knockback Variables")]
+    public float knockbackForce = 3;
+    public float knockbackCounter;
+    public float knockbackTotalTime = 0.2f;
+    public bool knockFromRight;
+
     private void Start()
     {
+
         // Asign relevant references within the code
         inputManager = GetComponent<PlayerInputManager>();
         rb = GetComponent<Rigidbody2D>();
-        
+
+        // Only randomize the character when restarting the level
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            // Select a random character to start with (1-3)
+            selectedCharacter = Random.Range(1, 4);
+        }
+        // When moving to the window, keep the same character
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            // Find the data manager
+            dataManager = FindAnyObjectByType<DataManager>();
+            // Set the selected character to the saved character
+            selectedCharacter = dataManager.savedCharacter;
+        }
+
         // Start with selected character
         SwitchCharacters();
-
-        // Set Starting Health
-        currentHP = maxHP;
-        isDead = false;
     }
 
     private void Update()
@@ -48,12 +66,12 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
         if (!isDead)
         {
-            // Logic to handle character switching
             HandleCharacterSwitching();
         }
     }
 
     // Method that checks if the player is touching the ground or not
+    // Returns a true or false
     public bool IsGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(2, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
@@ -68,7 +86,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             // Deactivate the input so it doesn't repeat
             inputManager.switchCharacters = false;
 
-            // Makes sure the player can't change characters while doing an action
+            // Makes sure the player can't change characters while doing an action, and they must be grounded
             if (!isDoingAction && inputManager.movementInputX == 0 && IsGrounded())
             {
                 // This if...else statment makes sure the character selection remains between 1 and 3
@@ -108,7 +126,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
                 break;
             case 2: // Rolly polly
                 // Reset Rolly Polly Launch
-                inputManager.isChoosingLaunchDirection = false;
+                inputManager.chooseLaunchDirection = false;
                 inputManager.preformLaunch = false;
 
                 // Set Rolly Polly as active character
@@ -134,9 +152,11 @@ public class CharacterManager : MonoBehaviour, IDamagable
         if (!isDead)
         {
             // Decrease player health by input damage
-            currentHP = currentHP - howMuch;
+            playerUIManager.currentHP = playerUIManager.currentHP - howMuch;
             // Start damage indication coroutine
             StartCoroutine(FlashRed());
+            // Update health UI
+            playerUIManager.UpdateHealthWithDamage();
         }
     }
 
@@ -184,26 +204,66 @@ public class CharacterManager : MonoBehaviour, IDamagable
     // Method that is called when the player dies
     void IDamagable.Die()
     {
-        // Activate death flag
+        // Activate death flag, stopping all other methods
         isDead = true;
+
         // Set hp to zero
-        currentHP = 0;
+        playerUIManager.currentHP = 0;
+        // Update health UI
+        playerUIManager.UpdateHealthWithDamage();
+
         // Stop player movement
         rb.linearVelocity = Vector3.zero;
+
+        // Play the death animation
+        PlayDeathAnimation();
+
         // Flip player on his back
         transform.eulerAngles = new Vector3(180, 0, 0);
 
-        // Makes player jump when they die
-        rb.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
+        // Stops player from sliding
+        rb.sharedMaterial = null;
+
+        // Start coroutine for showing game over screen
+        StartCoroutine(DelayBeforeShowingGameOverScreen());
+    }
+
+    void PlayDeathAnimation()
+    {
+        switch (selectedCharacter)
+        {
+            case 1:
+                stinkbug.GetComponent<Animator>().Play("Death");
+                break;
+            case 2:
+                rollyPolly.GetComponent<Animator>().Play("Death");
+                break;
+            case 3:
+                butterfly.GetComponent<Animator>().Play("Death");
+                break;
+            default:
+                Debug.Log("Death Animation Error");
+                break;
+        }
+    }
+
+    // Coroutine that shows the game over screen after a delay
+    IEnumerator DelayBeforeShowingGameOverScreen()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        gameOverScreenManager.ShowGameOverScreen();
+
+        yield return null;
     }
 
     // Method that is called when the player deals damage to a trap
-    public void ApplyDamage(IDamagable damagable)
+    public void ApplyDamageToTrap(IDamagable damagable)
     {
         damagable.TakeDamage(1);
     }
 
-    // Method that activates when a collider enters a trigger (stinkbug spray or collectibles)
+    // Method that activates when the Stinkbug sprays
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Asign the colliding GameObject to a variable
@@ -217,7 +277,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             Web webScript = whatIDamage.GetComponent<Web>();
 
             // Apply damage to the web
-            ApplyDamage(webDamagable);
+            ApplyDamageToTrap(webDamagable);
 
             // Check if the web's health is zero or lower, if so:
             if (webScript.health <= 0)
@@ -225,12 +285,6 @@ public class CharacterManager : MonoBehaviour, IDamagable
                 // Activate web death
                 webDamagable.Die();
             }
-        }
-
-        // Check if the colliding object's tag is "Collectible", if so:
-        if (whatIDamage.CompareTag("Collectible"))
-        {
-            playerUIManager.IncreaseScore();
         }
     }
 
@@ -248,7 +302,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             Burr burrScript = whatIDamage.GetComponent<Burr>();
 
             // Apply damage to the web
-            ApplyDamage(burrDamagable);
+            ApplyDamageToTrap(burrDamagable);
 
             // Check if the web's health is zero or lower, if so:
             if (burrScript.health <= 0)

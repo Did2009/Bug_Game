@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -5,33 +7,39 @@ using UnityEngine.UIElements;
 public class RollyPolly : PlayableCharacter
 {
     // References:
-    Animator animator;
     BoxCollider2D boxCollider;
     CircleCollider2D circleCollider;
 
-    [Header("Launching Variables")]
+    [Header("Launching Flags")]
+    public bool isCurrentlyChoosingDierction;
     [SerializeField] bool isLaunching;
+    public bool readyToLaunch;
+
+    [Header("Launching Variables")]
     [SerializeField] Vector3 launchDirection;
     [SerializeField] float launchPower;
     [SerializeField] float launchTime;
-    float launchTimeReset;
     public SpriteRenderer arrowRenderer;
-    [SerializeField] bool finishedLaunch;
+    float launchTimeReset;
+    
 
     protected override void Start()
     {
         base.Start();
 
         // Assign References:
-        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+
+        boxCollider.enabled = true;
+        circleCollider.enabled = false;
 
         // Determines the rolly polly's movement speed
         movementSpeed = 6;
         // Determines the rolly polly's jumping power
         jumpingPower = 5;
 
+        // Set starting collision and arrow visibility
         arrowRenderer.enabled = false;
         boxCollider.enabled = true;
         circleCollider.enabled = false;
@@ -46,32 +54,49 @@ public class RollyPolly : PlayableCharacter
 
         if (!characterManager.isDead)
         {
-            HandleLaunch();
-            HandleAnimations();
+            HandleJumping();
+            HandleJumpingColliders();
+
+            HandlelaunchingPreparation();
+            PerformLaunch();
         } 
     }
 
-    private void HandleLaunch()
+    private void HandlelaunchingPreparation()
     {
         // The player can only preform a launch when touching the ground
         if (characterManager.IsGrounded())
         {
             // While the player is holding the right mouse key:
-            if (inputManager.isChoosingLaunchDirection)
+            if (inputManager.chooseLaunchDirection)
             {
+                // Turn off input so it doesn't repeat
+                inputManager.chooseLaunchDirection = false;
+                // Turn on isCurrentlyChoosingDirection (Used for Forcing the player to wait for animation to finish)
+                isCurrentlyChoosingDierction = true;
+
                 // The player stops moving
                 parentRb.linearVelocity = Vector2.zero;
+
                 // The action flag is activated, stopping the player from doing other actions
                 characterManager.isDoingAction = true;
-                // An arrow to choose direction appears
-                arrowRenderer.enabled = true;
-                animator.Play("RollyPollySpin");
+
+                // Play curling animation
+                animator.Play("Curl");
+                animator.SetBool("isGrounded", false);
             }
-            // When the player releases the right mouse key:
-            else if (inputManager.preformLaunch)
+
+            // When the player releases the right mouse key, and is ready to launch:
+            else if (inputManager.preformLaunch && readyToLaunch)
             {
-                // Cancel input so it doesn't repeat
+                // turn off inputs so it doesn't repeat
                 inputManager.preformLaunch = false;
+                isCurrentlyChoosingDierction = false;
+                readyToLaunch = false;
+
+                // Switch animation state to fall
+                animator.SetBool("launched", true);
+
                 // The choosing direction arrow disappears
                 arrowRenderer.enabled = false;
 
@@ -88,8 +113,29 @@ public class RollyPolly : PlayableCharacter
                 // Turn on invicibility
                 characterManager.isInvincible = true;
             }
-        }
 
+            // When the player releases the right mouse key, and is not ready to launch:
+            else if (inputManager.preformLaunch && !readyToLaunch)
+            {
+                // Cancel input so it doesn't repeat
+                inputManager.preformLaunch = false;
+                isCurrentlyChoosingDierction = false;
+
+                // Turn off is doing action flag, so the player can continue doing other actions
+                characterManager.isDoingAction = false;
+            }
+
+            // When the player is ready to launch (finished the curl animation)
+            if (readyToLaunch)
+            {
+                // An arrow to choose direction appears
+                arrowRenderer.enabled = true;
+            }
+        }
+    }
+
+    private void PerformLaunch()
+    {
         // When a launch is preformed
         if (isLaunching)
         {
@@ -114,53 +160,37 @@ public class RollyPolly : PlayableCharacter
             // When the timer reaches 0, the launch is done:
             else
             {
+                // Switch animation state to fall
+                animator.SetBool("launched", false);
                 // Cancel input so it doesn't repeat
                 isLaunching = false;
                 // Turn off invicibility
                 characterManager.isInvincible = false;
                 // Cancel action flag so the player can make other actions
                 characterManager.isDoingAction = false;
+
                 // Reset the timer
                 launchTime = launchTimeReset;
                 // Return the player's usual movement controls
                 parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, 0);
-                // Start post launch flag
-                finishedLaunch = true;
-            }
-        }
-
-        // After the launch is preformed
-        if (finishedLaunch)
-        {
-            // When the character touches the ground:
-            if (characterManager.IsGrounded())
-            {
-                // Cancel input so it doesn't repeat
-                finishedLaunch = false;
             }
         }
     }
 
-    private void HandleAnimations()
+    private void HandleJumpingColliders()
     {
-        if (inputManager.isChoosingLaunchDirection || inputManager.preformLaunch || isLaunching)
+        if (!characterManager.isDoingAction)
         {
-            animator.SetBool("isGrounded", false);
-        }
-        else
-        {
-            animator.SetBool("isGrounded", characterManager.IsGrounded());
-        }
-
-        if (characterManager.IsGrounded())
-        {
-            boxCollider.enabled = true;
-            circleCollider.enabled = false;
-        }
-        else if (!characterManager.IsGrounded())
-        {
-            boxCollider.enabled = false;
-            circleCollider.enabled = true;
+            if (characterManager.IsGrounded())
+            {
+                boxCollider.enabled = true;
+                circleCollider.enabled = false;
+            }
+            else if (!characterManager.IsGrounded())
+            {
+                boxCollider.enabled = false;
+                circleCollider.enabled = true;
+            }
         }
     }
 }

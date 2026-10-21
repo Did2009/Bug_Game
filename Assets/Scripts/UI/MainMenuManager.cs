@@ -11,8 +11,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        EditorApplication.ExitPlaymode();
-
         Application.Quit();
     }
 }

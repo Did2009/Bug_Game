@@ -10,9 +10,11 @@ public class PlayerInputManager : MonoBehaviour
     public float movementInputX;
     public bool isJumping;
     public bool switchCharacters;
+
     [Header("Rolly Polly-related Inputs")]
-    public bool isChoosingLaunchDirection;
+    public bool chooseLaunchDirection;
     public bool preformLaunch;
+
     [Header("Stinkbug-related Inputs")]
     public bool preformSpray;
 
@@ -35,8 +37,7 @@ public class PlayerInputManager : MonoBehaviour
         // Switch Characters:
         controls.Player.SwitchCharacters.performed += i => switchCharacters = true;
         // Launch Rolly Polly:
-        controls.Player.RollyPollyLaunch.performed += i => isChoosingLaunchDirection = true;
-        controls.Player.RollyPollyLaunch.canceled += i => isChoosingLaunchDirection = false;
+        controls.Player.RollyPollyLaunch.performed += i => chooseLaunchDirection = true;
         controls.Player.RollyPollyLaunch.canceled += i => preformLaunch = true;
         // Stinkbug Spray:
         controls.Player.StinkbugSpray.performed += i => preformSpray = true;

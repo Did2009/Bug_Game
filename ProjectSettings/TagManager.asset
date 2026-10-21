@@ -44,23 +44,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: background art
+  - name: Background Art
     uniqueID: 1437931793
     locked: 0
-  - name: background color far
+  - name: Background Color Far
     uniqueID: 2043395449
     locked: 0
-  - name: player
+  - name: Player
     uniqueID: 591014667
     locked: 0
-  - name: coliders
+  - name: Colliders
     uniqueID: 368376871
     locked: 0
-  - name: ground
-    uniqueID: 2555763503
-    locked: 0
-  - name: thornes art
+  - name: Traps
     uniqueID: 2560753231
+    locked: 0
+  - name: Collectibles
+    uniqueID: 1580596155
+    locked: 0
+  - name: Ground
+    uniqueID: 2555763503
     locked: 0
   m_RenderingLayers:
   - Default
