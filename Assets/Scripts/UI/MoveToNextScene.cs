@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MoveToNextScene : MonoBehaviour
 {
     // Referneces
+    DataManager dataManager;
     SpriteRenderer spriteRenderer;
 
     public PlayerUIManager playerUIManager;
@@ -13,6 +14,7 @@ public class MoveToNextScene : MonoBehaviour
     void Start()
     {
         // Set references
+        dataManager = FindAnyObjectByType<DataManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Disable sprite renderer
@@ -24,8 +26,10 @@ public class MoveToNextScene : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Remember which character was selected at the time
-            playerUIManager.savedSelectedCharacter = characterManager.selectedCharacter;
+            // Store current character, score, and HP to Data Manager
+            dataManager.StoreSavedCharacter(characterManager.selectedCharacter);
+            dataManager.StoreSavedScore(playerUIManager.score);
+            dataManager.StoreSavedHP(playerUIManager.currentHP);
 
             SceneManager.LoadScene(2);
         }

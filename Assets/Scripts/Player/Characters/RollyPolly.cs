@@ -31,6 +31,9 @@ public class RollyPolly : PlayableCharacter
         boxCollider = GetComponent<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
 
+        boxCollider.enabled = true;
+        circleCollider.enabled = false;
+
         // Determines the rolly polly's movement speed
         movementSpeed = 6;
         // Determines the rolly polly's jumping power

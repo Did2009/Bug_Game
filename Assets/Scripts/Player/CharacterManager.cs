@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class CharacterManager : MonoBehaviour, IDamagable
 {
     [Header("References")]
+    DataManager dataManager;
     PlayerInputManager inputManager;
     public Rigidbody2D rb;
     public PlayerUIManager playerUIManager;
@@ -49,8 +50,10 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // When moving to the window, keep the same character
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            // Set the selected character to the saved selected character
-            selectedCharacter = playerUIManager.savedSelectedCharacter;
+            // Find the data manager
+            dataManager = FindAnyObjectByType<DataManager>();
+            // Set the selected character to the saved character
+            selectedCharacter = dataManager.savedCharacter;
         }
 
         // Start with selected character
@@ -59,6 +62,8 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
     private void Update()
     {
+        isTouchingGround = IsGrounded();
+
         if (!isDead)
         {
             HandleCharacterSwitching();
@@ -151,7 +156,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             // Start damage indication coroutine
             StartCoroutine(FlashRed());
             // Update health UI
-            playerUIManager.UpdateHealth();
+            playerUIManager.UpdateHealthWithDamage();
         }
     }
 
@@ -205,7 +210,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // Set hp to zero
         playerUIManager.currentHP = 0;
         // Update health UI
-        playerUIManager.UpdateHealth();
+        playerUIManager.UpdateHealthWithDamage();
 
         // Stop player movement
         rb.linearVelocity = Vector3.zero;

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2666432819520544538}
   - component: {fileID: 857008210790828995}
   - component: {fileID: 958120206421010895}
+  - component: {fileID: 2308216335723296118}
   m_Layer: 0
   m_Name: Spray
   m_TagString: Untagged
@@ -57,13 +58,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3459740254190406609}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.27, y: -0.11, z: 0}
-  m_LocalScale: {x: 1, y: 3.8171158, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.85, y: 0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7833397871942772415}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &857008210790828995
 SpriteRenderer:
   serializedVersion: 2
@@ -113,12 +114,12 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.09818521, g: 0.764151, b: 0.0036044943, a: 1}
+  m_Sprite: {fileID: 252035950, guid: 1947975283cb9314a9f519a5760c7b6a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.551398, y: 3.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -130,7 +131,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3459740254190406609}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -157,18 +158,40 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.16756481}
+  m_Offset: {x: -0.058038235, y: 0.028271914}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.551398, y: 3.57}
+    newSize: {x: 6.551398, y: 3.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.91246295}
+  m_Size: {x: 5.5734453, y: 1.7482195}
   m_EdgeRadius: 0
+--- !u!95 &2308216335723296118
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459740254190406609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c9d321c03b98dc438cec8b4aa860502, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4143511675371846509
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7833397871942772415
 Transform:
   m_ObjectHideFlags: 0
@@ -575,6 +598,7 @@ MonoBehaviour:
   movementSpeed: 0
   jumpingPower: 0
   spraySpriteRenderer: {fileID: 857008210790828995}
+  sprayAnimator: {fileID: 2308216335723296118}
   sprayBoxCollider: {fileID: 958120206421010895}
 --- !u!95 &2627765969891504323
 Animator:
@@ -795,7 +819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7324300318183231569
 Transform:
   m_ObjectHideFlags: 0
@@ -805,7 +829,7 @@ Transform:
   m_GameObject: {fileID: 7539796503046171868}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -0.37, z: 0}
+  m_LocalPosition: {x: 0.04, y: -0.374, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -924,7 +948,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7539796503046171868}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -951,7 +975,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03, y: -0.3}
+  m_Offset: {x: 0.03, y: -0.24}
   m_Radius: 0.32
 --- !u!114 &6869204698690010911
 MonoBehaviour:
