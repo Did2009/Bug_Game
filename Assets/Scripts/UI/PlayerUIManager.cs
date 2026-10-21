@@ -8,8 +8,15 @@ public class PlayerUIManager : MonoBehaviour
 {
     // Singleton
     public static PlayerUIManager instance;
+
+    // References
     CharacterManager characterManager;
     GameOverScreenManager gameOverScreenManager;
+    VictoryScreenManager victoryScreenManager;
+    MoveToNextScene moveToNextScene;
+
+    [Header("For Switching Levels:")]
+    public int savedSelectedCharacter;
 
     [Header("Health Variables")]
     public Image livesImage;
@@ -53,37 +60,55 @@ public class PlayerUIManager : MonoBehaviour
         // Set this instance to it's variable
         characterManager.playerUIManager = this;
 
-        // If the new scene is the level (starting a new game)
-        if (newScene.buildIndex == 1)
+        switch (newScene.buildIndex)
         {
-            // Turn on UI
-            this.gameObject.SetActive(true);
+            // The new scene is the Main Menu
+            case 0:
+                // Turn off UI
+                this.gameObject.SetActive(false);
+                break;
 
-            // Find the Game Over Screen Manager
-            gameOverScreenManager = FindAnyObjectByType<GameOverScreenManager>();
-            // Set this instance to it's variable
-            gameOverScreenManager.playerUI = this.gameObject;
+            // The new scene is the Level (also for restarting)
+            case 1:
+                // Turn on UI
+                this.gameObject.SetActive(true);
 
-            // Reset score
-            score = 0;
-            // Update score tracker
-            scoreTrackerText.text = score.ToString();
-            // Reset lives
-            currentHP = 3;
-            // Update health tracker
-            UpdateHealth();
-        }
-        // If the new scene is the main menu
-        else if(newScene.buildIndex == 0)
-        {
-            // Turn off UI
-            this.gameObject.SetActive(false);
-        }
-        // If on another scene (window or testground)
-        else
-        {
-            // Turn on UI
-            this.gameObject.SetActive(true);
+                // Find the Game Over Screen Manager
+                gameOverScreenManager = FindAnyObjectByType<GameOverScreenManager>();
+                // Set this instance to it's variable
+                gameOverScreenManager.playerUI = this.gameObject;
+
+                // Find the Move To Next Scene Script
+                moveToNextScene = FindAnyObjectByType<MoveToNextScene>();
+                // Set this instance to it's variable
+                moveToNextScene.playerUIManager = this;
+
+                // Reset score
+                score = 0;
+                // Update score tracker
+                scoreTrackerText.text = score.ToString();
+                // Reset lives
+                currentHP = 3;
+                // Update health tracker
+                UpdateHealth();
+                break;
+
+            // The new scene is the Window
+            case 2:
+                // Turn on UI
+                this.gameObject.SetActive(true);
+
+                // Find the Victory Screen
+                victoryScreenManager = FindAnyObjectByType<VictoryScreenManager>();
+                // Set this instance to it's variable
+                victoryScreenManager.playerUI = this.gameObject;
+                break;
+
+            // The new scene is another result (testground)
+            default:
+                // Turn on UI
+                this.gameObject.SetActive(true);
+                break;
         }
     }
 

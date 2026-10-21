@@ -6,8 +6,10 @@ public class GameOverScreenManager : MonoBehaviour
 {
     [Header("Game Over Variables")]
     public Image gameOverScreen;
-    public GameObject tryAgainButton;
     public GameObject playerUI;
+    public GameObject tryAgainButton;
+    public GameObject mainMenuButton;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,7 @@ public class GameOverScreenManager : MonoBehaviour
         playerUI.SetActive(true);
         gameOverScreen.enabled = false;
         tryAgainButton.SetActive(false);
+        mainMenuButton.SetActive(false);
     }
 
     public void ShowGameOverScreen()
@@ -23,10 +26,16 @@ public class GameOverScreenManager : MonoBehaviour
         playerUI.SetActive(false);
         gameOverScreen.enabled = true;
         tryAgainButton.SetActive(true);
+        mainMenuButton.SetActive(true);
     }
 
     public void TryAgain()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

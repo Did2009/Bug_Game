@@ -10,9 +10,11 @@ public class PlayerInputManager : MonoBehaviour
     public float movementInputX;
     public bool isJumping;
     public bool switchCharacters;
+
     [Header("Rolly Polly-related Inputs")]
     public bool chooseLaunchDirection;
     public bool preformLaunch;
+
     [Header("Stinkbug-related Inputs")]
     public bool preformSpray;
 

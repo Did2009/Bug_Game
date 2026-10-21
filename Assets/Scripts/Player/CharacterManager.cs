@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour, IDamagable
 {
-    // References
+    [Header("References")]
     PlayerInputManager inputManager;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public PlayerUIManager playerUIManager;
     public GameOverScreenManager gameOverScreenManager;
+    public MoveToNextScene moveToNextScene;
 
     [Header("Character Flags")]
     public bool isDead;
@@ -20,7 +22,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
     [SerializeField] Transform groundCheck;
 
     [Header("Character Selection Variables")]
-    public int selectedCharacter = 1;
+    public int selectedCharacter;
     public GameObject stinkbug;
     public GameObject rollyPolly;
     public GameObject butterfly;
@@ -37,26 +39,34 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // Asign relevant references within the code
         inputManager = GetComponent<PlayerInputManager>();
         rb = GetComponent<Rigidbody2D>();
-        
+
+        // Only randomize the character when restarting the level
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            // Select a random character to start with (1-3)
+            selectedCharacter = Random.Range(1, 4);
+        }
+        // When moving to the window, keep the same character
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            // Set the selected character to the saved selected character
+            selectedCharacter = playerUIManager.savedSelectedCharacter;
+        }
+
         // Start with selected character
         SwitchCharacters();
-
-        // Set death flag to false
-        isDead = false;
     }
 
     private void Update()
     {
-        isTouchingGround = IsGrounded();
-
         if (!isDead)
         {
-            // Logic to handle character switching
             HandleCharacterSwitching();
         }
     }
 
     // Method that checks if the player is touching the ground or not
+    // Returns a true or false
     public bool IsGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(2, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
@@ -71,7 +81,7 @@ public class CharacterManager : MonoBehaviour, IDamagable
             // Deactivate the input so it doesn't repeat
             inputManager.switchCharacters = false;
 
-            // Makes sure the player can't change characters while doing an action
+            // Makes sure the player can't change characters while doing an action, and they must be grounded
             if (!isDoingAction && inputManager.movementInputX == 0 && IsGrounded())
             {
                 // This if...else statment makes sure the character selection remains between 1 and 3

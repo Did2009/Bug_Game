@@ -6,6 +6,9 @@ public class MoveToNextScene : MonoBehaviour
     // Referneces
     SpriteRenderer spriteRenderer;
 
+    public PlayerUIManager playerUIManager;
+    public CharacterManager characterManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +24,9 @@ public class MoveToNextScene : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Remember which character was selected at the time
+            playerUIManager.savedSelectedCharacter = characterManager.selectedCharacter;
+
             SceneManager.LoadScene(2);
         }
     }
