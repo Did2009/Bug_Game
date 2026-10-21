@@ -52,7 +52,7 @@ public class RollyPolly : PlayableCharacter
         if (!characterManager.isDead)
         {
             HandleJumping();
-            HandleJumpingAnimations();
+            HandleJumpingColliders();
 
             HandlelaunchingPreparation();
             PerformLaunch();
@@ -78,9 +78,9 @@ public class RollyPolly : PlayableCharacter
                 // The action flag is activated, stopping the player from doing other actions
                 characterManager.isDoingAction = true;
 
-                // Set animations
-                animator.SetBool("isGrounded", false);
+                // Play curling animation
                 animator.Play("Curl");
+                animator.SetBool("isGrounded", false);
             }
 
             // When the player releases the right mouse key, and is ready to launch:
@@ -90,6 +90,9 @@ public class RollyPolly : PlayableCharacter
                 inputManager.preformLaunch = false;
                 isCurrentlyChoosingDierction = false;
                 readyToLaunch = false;
+
+                // Switch animation state to fall
+                animator.SetBool("launched", true);
 
                 // The choosing direction arrow disappears
                 arrowRenderer.enabled = false;
@@ -154,6 +157,8 @@ public class RollyPolly : PlayableCharacter
             // When the timer reaches 0, the launch is done:
             else
             {
+                // Switch animation state to fall
+                animator.SetBool("launched", false);
                 // Cancel input so it doesn't repeat
                 isLaunching = false;
                 // Turn off invicibility
@@ -169,12 +174,10 @@ public class RollyPolly : PlayableCharacter
         }
     }
 
-    private void HandleJumpingAnimations()
+    private void HandleJumpingColliders()
     {
         if (!characterManager.isDoingAction)
         {
-            animator.SetBool("isGrounded", characterManager.IsGrounded());
-
             if (characterManager.IsGrounded())
             {
                 boxCollider.enabled = true;

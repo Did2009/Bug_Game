@@ -30,9 +30,11 @@ public abstract class PlayableCharacter : MonoBehaviour
     {
         HandleMovementAndKnockback();
 
+        animator.SetBool("isGrounded", characterManager.IsGrounded());
+
         if (!characterManager.isDead)
         {
-            HandleSpriteDirections(); 
+            HandleSpriteDirections();
         }
     }
 
@@ -51,6 +53,8 @@ public abstract class PlayableCharacter : MonoBehaviour
                 {
                     // Normal player movement
                     parentRb.linearVelocity = new Vector2(inputManager.movementInputX * movementSpeed, parentRb.linearVelocity.y);
+                    // Handle Animations
+                    HandleMovementAnimations();
                 }
             }
         }
@@ -61,17 +65,25 @@ public abstract class PlayableCharacter : MonoBehaviour
             {
                 // Apply negative knockback movement
                 parentRb.linearVelocity = new Vector2(-characterManager.knockbackForce, characterManager.knockbackForce);
+                // Handle Animations
+                animator.SetInteger("Movement", 0);
             }
             if (!characterManager.knockFromRight)
             {
                 // Apply knockback movement
                 parentRb.linearVelocity = new Vector2(characterManager.knockbackForce, characterManager.knockbackForce);
+                // Handle Animations
+                animator.SetInteger("Movement", 0);
             }
 
             // Lower timer
             characterManager.knockbackCounter -= Time.deltaTime;
         }
-        
+    }
+
+    protected virtual void HandleMovementAnimations()
+    {
+        animator.SetInteger("Movement", (int)inputManager.movementInputX);
     }
 
     // Method to make the player jump
@@ -92,6 +104,8 @@ public abstract class PlayableCharacter : MonoBehaviour
                 {
                     // Makes the player jump
                     parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+                    // Play jumping animation
+                    animator.Play("Jump");
                 }
             }
         }

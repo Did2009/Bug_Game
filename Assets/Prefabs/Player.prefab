@@ -295,9 +295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a89263737e5bdf49a434d0b0ba5c793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  rb: {fileID: 0}
   playerUIManager: {fileID: 0}
-  maxHP: 3
-  currentHP: 0
+  gameOverScreenManager: {fileID: 0}
+  moveToNextScene: {fileID: 0}
   isDead: 0
   isDoingAction: 0
   isTouchingGround: 0
@@ -437,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7833397871942772415
 Transform:
   m_ObjectHideFlags: 0
@@ -616,7 +617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3818975239344064926
 Transform:
   m_ObjectHideFlags: 0
@@ -681,7 +682,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4530433918361379743, guid: 618c6ac9183400941acab78ba5c36022, type: 3}
+  m_Sprite: {fileID: -7338507068891074400, guid: d9f50c59ce04b9e4bb1edc947c8afaf6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -729,7 +730,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.1046154, y: 1.8777777}
+    oldSize: {x: 2.7833333, y: 2.7777777}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

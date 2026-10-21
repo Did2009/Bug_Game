@@ -145,7 +145,6 @@ public class PlayerUIManager : MonoBehaviour
 
     IEnumerator FlashRed()
     {
-        Debug.Log("Flashin Red!");
         livesImage.color = Color.red;
 
         yield return new WaitForSeconds(0.15f);

@@ -210,6 +210,9 @@ public class CharacterManager : MonoBehaviour, IDamagable
         // Stop player movement
         rb.linearVelocity = Vector3.zero;
 
+        // Play the death animation
+        PlayDeathAnimation();
+
         // Flip player on his back
         transform.eulerAngles = new Vector3(180, 0, 0);
 
@@ -218,6 +221,25 @@ public class CharacterManager : MonoBehaviour, IDamagable
 
         // Start coroutine for showing game over screen
         StartCoroutine(DelayBeforeShowingGameOverScreen());
+    }
+
+    void PlayDeathAnimation()
+    {
+        switch (selectedCharacter)
+        {
+            case 1:
+                stinkbug.GetComponent<Animator>().Play("Death");
+                break;
+            case 2:
+                rollyPolly.GetComponent<Animator>().Play("Death");
+                break;
+            case 3:
+                butterfly.GetComponent<Animator>().Play("Death");
+                break;
+            default:
+                Debug.Log("Death Animation Error");
+                break;
+        }
     }
 
     // Coroutine that shows the game over screen after a delay

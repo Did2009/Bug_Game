@@ -39,12 +39,16 @@ public class Butterfly : PlayableCharacter
                 numberOfFlaps = 1;
                 // Makes the player jump
                 parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+                // Play flying animation
+                animator.Play("Fly");
             }
             else if (numberOfFlaps == 1 || numberOfFlaps == 2)
             {
                 numberOfFlaps++;
                 // Makes the player jump
                 parentRb.linearVelocity = new Vector2(parentRb.linearVelocity.x, jumpingPower);
+                // Play flying animation
+                animator.Play("Fly");
             }
         }
     }
